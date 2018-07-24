@@ -7,5 +7,5 @@
 `npm init`  
 `npm install sa-template-1 --save-dev`  
 `node node_modules/sa-template-1/main.js`  
-`node node_modules/sa-template-1/main.js --readme` 
+`node node_modules/sa-template-1/main.js --readme`  
 `npm install`  
