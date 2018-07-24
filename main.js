@@ -7,8 +7,6 @@ const minimist        = require('minimist');
 const ncp             = require('ncp');
 let templateJSON      = require(path.resolve(__dirname, 'template', 'package.json'));
 let packageJSON       = require(path.resolve(__dirname, project, 'package.json'));
-let args              = minimist(process.argv.slice(2));
-let readme            = typeof(args.readme) !== 'undefined';
 
 let json = {
   ...packageJSON,
@@ -64,7 +62,9 @@ if(fs.existsSync(path.resolve(__dirname, project, '.gitignore'))) {
   });
 } else getGitIgnore();
 
-if(readme) ncp.ncp(path.resolve(__dirname, 'template', 'readme.md'), path.resolve(__dirname, project, 'readme.md'), error => {
-  if(error) return console.error('Error: ' + error);
-  console.log('Success: readme updated');  
-});
+if(!fs.existsSync(path.resolve(__dirname, project, 'readme.md'))) {
+  ncp.ncp(path.resolve(__dirname, 'template', 'readme.md'), path.resolve(__dirname, project, 'readme.md'), error => {
+    if(error) return console.error('Error: ' + error);
+    console.log('Success: readme updated');  
+  });
+}

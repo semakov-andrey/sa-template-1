@@ -1,7 +1,8 @@
 {
   "scripts": {
     "start": "gulp serve",
-    "build": "gulp build --production"
+    "build": "gulp build --production",
+    "template": "node node_modules/sa-template-1/main.js"
   },
   "config": {
     "directories": {
