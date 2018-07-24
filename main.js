@@ -11,6 +11,10 @@ let packageJSON       = require(path.resolve(__dirname, project, 'package.json')
 let json = {
   ...packageJSON,
   scripts: templateJSON.scripts,
+  devDependencies: {
+    ...packageJSON.devDependencies,
+    ...templateJSON.devDependencies,
+  },
   config: {
     ...packageJSON.config,
     ...templateJSON.config,
@@ -26,10 +30,12 @@ fs.writeFile(path.resolve(__dirname, project, 'package.json'), JSON.stringify(js
   console.log('Success: configuration updated');
 });
 
-ncp.ncp(path.resolve(__dirname, 'template', 'gulpfile.js'), path.resolve(__dirname, project, 'gulpfile.js'), error => {
-  if(error) return console.error('Error: ' + error);
-  console.log('Success: task-runner updated');
-});
+if(!fs.existsSync(path.resolve(__dirname, project, 'gulpfile.js'))) {
+  ncp.ncp(path.resolve(__dirname, 'template', 'gulpfile.js'), path.resolve(__dirname, project, 'gulpfile.js'), error => {
+    if(error) return console.error('Error: ' + error);
+    console.log('Success: task-runner updated');
+  });
+}
 
 ncp.ncp(path.resolve(__dirname, 'template', 'tasks'), path.resolve(__dirname, project, 'tasks'), error => {
   if(error) return console.error('Error: ' + error);
