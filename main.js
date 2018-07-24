@@ -7,15 +7,12 @@ const ncp             = require('ncp').ncp;
 let template          = require(path.resolve(__dirname, 'template.json'));
 let packageJSON       = require(path.resolve(__dirname, project, 'package.json'));
 
-//if(!packageJSON.config) packageJSON.config = {};
-//if(!packageJSON.scripts) packageJSON.scripts = {};
-
-//packageJSON.config            = Object.assign(template.config, packageJSON.config);
-//packageJSON.scripts           = Object.assign(template.scripts, packageJSON.scripts);
-//packageJSON.devDependencies   = Object.assign(template.devDependencies, packageJSON.devDependencies);
-
 let json = {
   ...packageJSON,
+  scripts: {
+    ...packageJSON.scripts,
+    ...template.scripts
+  },
   devDependencies: {
     ...packageJSON.devDependencies,
     ...template.devDependencies
@@ -25,10 +22,10 @@ let json = {
     ...template.config,
     directories: {
       ...packageJSON.config.directories,
-      ...template.config.directories,
-    },    
+      ...template.config.directories
+    }   
   }
-}
+};
 
 fs.writeFile('package.json', JSON.stringify(json, null, 2), 'utf8', error => {
   if(error) return console.error('Error: ' + error);
