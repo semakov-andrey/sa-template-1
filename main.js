@@ -32,7 +32,7 @@ fs.writeFile(path.resolve(__dirname, project, 'package.json'), JSON.stringify(js
   console.log('Success: configuration updated');
 });
 
-ncp(path.resolve(__dirname, 'template', 'gulpfile.js'), path.resolve(__dirname, project), error => {
+ncp(path.resolve(__dirname, 'template', 'gulpfile.js'), path.resolve(__dirname, project, 'gulpfile.js'), error => {
   if(error) return console.error('Error: ' + error);
   console.log('Success: task-runner updated');
 });
