@@ -7,7 +7,7 @@
     "type": "git",
     "url": "git@gitlab.com:semakov_andrey/sa-template-1.git"
   },
-  "author": "Semakov_andrey",
+  "author": "Semakov Andrey",
   "license": "ISC",
   "dependencies": {
     "ncp": "^2.0.0"
