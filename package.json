@@ -10,7 +10,6 @@
   "author": "Semakov Andrey",
   "license": "ISC",
   "dependencies": {
-    "ncp": "^2.0.0",
-    "parse-gitignore": "^0.5.1"
+    "ncp": "^2.0.0"
   }
 }
