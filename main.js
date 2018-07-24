@@ -37,17 +37,22 @@ ncp(path.resolve(__dirname, 'template', 'gulpfile.js'), path.resolve(__dirname, 
   console.log('Success: task-runner updated');
 });
 
-ncp(path.resolve(__dirname, 'template', 'tasks'), path.resolve(__dirname, project), error => {
+ncp(path.resolve(__dirname, 'template', 'tasks'), path.resolve(__dirname, project, 'tasks'), error => {
   if(error) return console.error('Error: ' + error);
   console.log('Success: tasks updated');  
 });
 
-fs.readFile(path.resolve(__dirname, project, '.gitignore'), 'utf8', (error, data) => {
-  if(error) return console.error('Error: ' + error);
-  let ignore = data.split('\r\n');
-  let gitignore = [...new Set([...ignore, ...template.ignore])].join('\r\n');
+let writeGitIgnore = (data = []) => {
+  let gitignore = [...new Set([...data, ...template.ignore])].join('\r\n');
   fs.writeFile(path.resolve(__dirname, project, '.gitignore'), gitignore, 'utf8', error => {
     if(error) return console.error('Error: ' + error);
     console.log('Success: gitignore updated');
-  })
-});
+  });
+}
+
+if(fs.existsSync(path.resolve(__dirname, project, '.gitignore'))) {
+  fs.readFile(path.resolve(__dirname, project, '.gitignore'), 'utf8', (error, data) => {
+    if(error) return console.error('Error: ' + error);
+    writeGitIgnore(data.split('\r\n'));
+  });
+} else writeGitIgnore();
