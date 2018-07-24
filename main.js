@@ -4,7 +4,6 @@ const project         = '../../';
 const fs              = require('fs');
 const path            = require('path');
 const ncp             = require('ncp').ncp;
-const gitignore       = require('parse-gitignore');
 let template          = require(path.resolve(__dirname, 'template.json'));
 let packageJSON       = require(path.resolve(__dirname, project, 'package.json'));
 
