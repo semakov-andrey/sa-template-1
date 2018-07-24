@@ -36,5 +36,3 @@ gulp.task('serve', gulp.series('clean', 'pngSprite', gulp.parallel('html', 'css'
 gulp.task('build', gulp.series('clean', 'pngSprite', gulp.parallel('html', 'css', 'js', 'fonts', 'svgSprite', 'compress')));
 
 gulp.task('default', gulp.series('serve'));
-
-// gm mogrify -thumbnail 450x450 -background transparent -gravity center -extent 512x512-0-0 *.png
