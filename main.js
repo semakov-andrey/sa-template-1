@@ -3,9 +3,12 @@
 const project         = '../../';
 const fs              = require('fs');
 const path            = require('path');
-const ncp             = require('ncp').ncp;
+const minimist        = require('minimist');
+const ncp             = require('ncp');
 let template          = require(path.resolve(__dirname, 'template', 'template.json'));
 let packageJSON       = require(path.resolve(__dirname, project, 'package.json'));
+let args              = minimist(process.argv.slice(2));
+let readme            = typeof(args.readme) !== 'undefined';
 
 let json = {
   ...packageJSON,
@@ -32,12 +35,12 @@ fs.writeFile(path.resolve(__dirname, project, 'package.json'), JSON.stringify(js
   console.log('Success: configuration updated');
 });
 
-ncp(path.resolve(__dirname, 'template', 'gulpfile.js'), path.resolve(__dirname, project, 'gulpfile.js'), error => {
+ncp.ncp(path.resolve(__dirname, 'template', 'gulpfile.js'), path.resolve(__dirname, project, 'gulpfile.js'), error => {
   if(error) return console.error('Error: ' + error);
   console.log('Success: task-runner updated');
 });
 
-ncp(path.resolve(__dirname, 'template', 'tasks'), path.resolve(__dirname, project, 'tasks'), error => {
+ncp.ncp(path.resolve(__dirname, 'template', 'tasks'), path.resolve(__dirname, project, 'tasks'), error => {
   if(error) return console.error('Error: ' + error);
   console.log('Success: tasks updated');  
 });
@@ -56,3 +59,8 @@ if(fs.existsSync(path.resolve(__dirname, project, '.gitignore'))) {
     writeGitIgnore(data.split('\r\n'));
   });
 } else writeGitIgnore();
+
+if(readme) ncp.ncp(path.resolve(__dirname, 'template', 'readme.md'), path.resolve(__dirname, project, 'readme.md'), error => {
+  if(error) return console.error('Error: ' + error);
+  console.log('Success: readme updated');  
+});
