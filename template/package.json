@@ -1,0 +1,21 @@
+{
+  "scripts": {
+    "start": "gulp serve",
+    "build": "gulp build --production"
+  },
+  "config": {
+    "directories": {
+      "source": "src",
+      "development": "tmp",
+      "production": "build"
+    },
+    "svg2png": {
+      "width": 450,
+      "height": 450
+    },
+    "browsers": [
+      "> 5%",
+      "last 2 versions"
+    ]
+  }
+}

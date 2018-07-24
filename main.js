@@ -5,7 +5,7 @@ const fs              = require('fs');
 const path            = require('path');
 const minimist        = require('minimist');
 const ncp             = require('ncp');
-let template          = require(path.resolve(__dirname, 'template', 'template.json'));
+let templateJSON      = require(path.resolve(__dirname, 'template', 'package.json'));
 let packageJSON       = require(path.resolve(__dirname, project, 'package.json'));
 let args              = minimist(process.argv.slice(2));
 let readme            = typeof(args.readme) !== 'undefined';
@@ -14,18 +14,14 @@ let json = {
   ...packageJSON,
   scripts: {
     ...packageJSON.scripts,
-    ...template.scripts
-  },
-  devDependencies: {
-    ...packageJSON.devDependencies,
-    ...template.devDependencies
+    ...templateJSON.scripts
   },
   config: {
     ...packageJSON.config,
-    ...template.config,
+    ...templateJSON.config,
     directories: {
       ...packageJSON.config.directories,
-      ...template.config.directories
+      ...templateJSON.config.directories
     }   
   }
 };
@@ -45,20 +41,29 @@ ncp.ncp(path.resolve(__dirname, 'template', 'tasks'), path.resolve(__dirname, pr
   console.log('Success: tasks updated');  
 });
 
-let writeGitIgnore = (data = []) => {
+if(fs.existsSync(path.resolve(__dirname, project, '.gitignore'))) {
+  fs.readFile(path.resolve(__dirname, project, '.gitignore'), 'utf8', (error, data) => {
+    if(error) return console.error('Error: ' + error);
+    getGitIgnore(data.split('\r\n'));
+  });
+} else getGitIgnore();
+
+let getGitIgnore = (data = []) => {
+  if(fs.existsSync(path.resolve(__dirname, 'template', '.gitignore'))) {
+    fs.readFile(path.resolve(__dirname, 'template', '.gitignore'), 'utf8', (error, newData) => {
+      if(error) return console.error('Error: ' + error);
+      writeGitIgnore(data, newData.split('\r\n'));
+    });
+  } else writeGitIgnore(data);
+}
+
+let writeGitIgnore = (data, newData = []) => {
   let gitignore = [...new Set([...data, ...template.ignore])].join('\r\n');
   fs.writeFile(path.resolve(__dirname, project, '.gitignore'), gitignore, 'utf8', error => {
     if(error) return console.error('Error: ' + error);
     console.log('Success: gitignore updated');
   });
 }
-
-if(fs.existsSync(path.resolve(__dirname, project, '.gitignore'))) {
-  fs.readFile(path.resolve(__dirname, project, '.gitignore'), 'utf8', (error, data) => {
-    if(error) return console.error('Error: ' + error);
-    writeGitIgnore(data.split('\r\n'));
-  });
-} else writeGitIgnore();
 
 if(readme) ncp.ncp(path.resolve(__dirname, 'template', 'readme.md'), path.resolve(__dirname, project, 'readme.md'), error => {
   if(error) return console.error('Error: ' + error);
