@@ -12,15 +12,12 @@ let readme            = typeof(args.readme) !== 'undefined';
 
 let json = {
   ...packageJSON,
-  scripts: {
-    ...packageJSON.scripts,
-    ...templateJSON.scripts
-  },
+  scripts: templateJSON.scripts,
   config: {
     ...packageJSON.config,
     ...templateJSON.config,
     directories: {
-      ...packageJSON.config.directories,
+      ...(packageJSON.config && packageJSON.config.directories ? packageJSON.config.directories : {}),
       ...templateJSON.config.directories
     }   
   }
@@ -41,29 +38,31 @@ ncp.ncp(path.resolve(__dirname, 'template', 'tasks'), path.resolve(__dirname, pr
   console.log('Success: tasks updated');  
 });
 
+let getGitIgnore = (data = []) => {
+  if(!data.length) data = [];
+  if(fs.existsSync(path.resolve(__dirname, 'template', 'gitignore'))) {
+    fs.readFile(path.resolve(__dirname, 'template', 'gitignore'), 'utf8', (error, newData) => {
+      if(error) return console.error('Error: ' + error);
+      writeGitIgnore(data, newData.split('\r\n'));
+    });
+  } else writeGitIgnore(data);
+};
+
+let writeGitIgnore = (data, newData = []) => {
+  if(!newData.length) newData = [];
+  let gitignore = [...new Set([...data, ...newData])].join('\r\n');
+  fs.writeFile(path.resolve(__dirname, project, '.gitignore'), gitignore, 'utf8', error => {
+    if(error) return console.error('Error: ' + error);
+    console.log('Success: gitignore updated');
+  });
+};
+
 if(fs.existsSync(path.resolve(__dirname, project, '.gitignore'))) {
   fs.readFile(path.resolve(__dirname, project, '.gitignore'), 'utf8', (error, data) => {
     if(error) return console.error('Error: ' + error);
     getGitIgnore(data.split('\r\n'));
   });
 } else getGitIgnore();
-
-let getGitIgnore = (data = []) => {
-  if(fs.existsSync(path.resolve(__dirname, 'template', '.gitignore'))) {
-    fs.readFile(path.resolve(__dirname, 'template', '.gitignore'), 'utf8', (error, newData) => {
-      if(error) return console.error('Error: ' + error);
-      writeGitIgnore(data, newData.split('\r\n'));
-    });
-  } else writeGitIgnore(data);
-}
-
-let writeGitIgnore = (data, newData = []) => {
-  let gitignore = [...new Set([...data, ...template.ignore])].join('\r\n');
-  fs.writeFile(path.resolve(__dirname, project, '.gitignore'), gitignore, 'utf8', error => {
-    if(error) return console.error('Error: ' + error);
-    console.log('Success: gitignore updated');
-  });
-}
 
 if(readme) ncp.ncp(path.resolve(__dirname, 'template', 'readme.md'), path.resolve(__dirname, project, 'readme.md'), error => {
   if(error) return console.error('Error: ' + error);
