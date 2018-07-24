@@ -1,9 +1,22 @@
 'use strict';
 
-//const fs      = require('fs');
-//const path    = require('path');
-const ncp     = require('ncp').ncp;
+const project          = '../../';
+const fs              = require('fs');
+const path            = require('path');
+const ncp             = require('ncp').ncp;
+let template          = require(path.resolve(__dirname, 'template.json'));
+let packageJSON       = require(path.resolve(__dirname, project, 'package.json'));
 
-//fs.createReadStream(path.resolve(__dirname, 'template/gulpfile.js')).pipe(fs.createWriteStream(path.resolve(__dirname, '../../gulpfile.js')));
+let devDependencies   = Object.assign(template.devDependencies, packageJSON.devDependencies);
+packageJSON.devDependencies = {};
+Object.keys(devDependencies).sort().forEach(key => packageJSON.devDependencies[key] = devDependencies[key]);
+packageJSON.scripts   = template.scripts;
+fs.writeFile('package.json', JSON.stringify(packageJSON, null, 2), 'utf8', error => {
+  if(error) return console.error('Error: ' + error);
+  console.log('Success: configuration updated');
+});
 
-ncp(path.resolve(__dirname, 'template/tasks'), path.resolve(__dirname, '../../template/tasks'));
+ncp(path.resolve(__dirname, 'template'), path.resolve(__dirname, project), error => {
+  if(error) return console.error('Error: ' + error);
+  console.log('Success: template updated');
+});
