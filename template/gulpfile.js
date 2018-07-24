@@ -35,4 +35,4 @@ gulp.task('serve', gulp.series('clean', 'pngSprite', gulp.parallel('html', 'css'
 
 gulp.task('build', gulp.series('clean', 'pngSprite', gulp.parallel('html', 'css', 'js', 'fonts', 'svgSprite', 'compress')));
 
-gulp.task('default', gulp.series('serve'));
+gulp.task('default', gulp.series('serve')); 
