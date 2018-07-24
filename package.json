@@ -1,6 +1,7 @@
 {
+  "_id": "sa-template-1@0.0.6",
   "name": "sa-template-1",
-  "version": "0.0.2",
+  "version": "0.0.6",
   "description": "sa-template-1",
   "main": "main.js",
   "repository": {
@@ -8,5 +9,8 @@
     "url": "git@gitlab.com:semakov_andrey/sa-template-1.git"
   },
   "author": "Semakov_andrey",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "ncp": "^2.0.0"
+  }
 }
