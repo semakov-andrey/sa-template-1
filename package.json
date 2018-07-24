@@ -1,7 +1,6 @@
 {
-  "_id": "sa-template-1@0.0.6",
   "name": "sa-template-1",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "sa-template-1",
   "main": "main.js",
   "repository": {
@@ -10,7 +9,7 @@
   },
   "author": "Semakov_andrey",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "ncp": "^2.0.0"
   }
 }
