@@ -52,7 +52,7 @@ if(!tasks) {
   });
 } else {
   [...new Set([...rTasks, ...tasks])].forEach(task => {
-    if(fs.existsSync(path.resolve(__dirname, project, task + '.js'))) {
+    if(fs.existsSync(path.resolve(__dirname, 'template', 'tasks', task + '.js'))) {
       ncp.ncp(path.resolve(__dirname, 'template', 'tasks', task + '.js'), path.resolve(__dirname, project, 'tasks', task + '.js'), error => {
         if(error) return console.error('Error: ' + error);
         console.log('Success: task ' + task + ' added');  
