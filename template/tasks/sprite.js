@@ -1,7 +1,6 @@
 'use strict';
 
-var svgSprite       = require('gulp-svg-sprites'),
-  pngSprite         = require('gulp.spritesmith');
+var svgSprite       = require('gulp-svg-sprites');
 
 module.exports = params => {
   var { gulp, source, target, browserSync } = params;
@@ -24,15 +23,5 @@ module.exports = params => {
       }))
       .pipe(gulp.dest(target + '/images/'))
       .on('end', browserSync.reload);
-  });
-
-  gulp.task('pngSprite', () => {
-    let spriteData = gulp.src(source + '/_images/_png/*.png')
-      .pipe(pngSprite({
-        imgName: 'sprite.png',
-        cssName: 'sprite.css'
-      }));
-    spriteData.img.pipe(gulp.dest(target + '/images/'));
-    return spriteData.css.pipe(gulp.dest(source + '/_styles/'));      
   });
 };

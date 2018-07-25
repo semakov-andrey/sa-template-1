@@ -1,19 +1,21 @@
 'use strict';
 
-var packageJSON     = require('./package.json'),
-  gulp              = require('gulp'),
-  minimist          = require('minimist'),
-  glob              = require('glob'),
-  plumber           = require('gulp-plumber'),
-  notify            = require('gulp-notify'),
-  gulpif            = require('gulp-if'),
-  sourcemaps        = require('gulp-sourcemaps'),
-  args              = minimist(process.argv.slice(2)),
-  production        = typeof(args.production) !== 'undefined',
-  source            = packageJSON.config.directories.source,
-  target            = packageJSON.config.directories[production ? 'production' : 'development'],
-  browserSync	      = require('browser-sync'),
-  browserList       = packageJSON.config.browsers;  
+const packageJSON     = require('./package.json');
+const gulp            = require('gulp');
+const minimist        = require('minimist');
+const glob            = require('glob');
+const plumber         = require('gulp-plumber');
+const notify          = require('gulp-notify');
+const gulpif          = require('gulp-if');
+const sourcemaps      = require('gulp-sourcemaps');
+const browserSync	    = require('browser-sync');
+
+let args              = minimist(process.argv.slice(2));
+let production        = typeof(args.production) !== 'undefined';
+let source            = packageJSON.config.directories.source;
+let target            = packageJSON.config.directories[production ? 'production' : 'development'];
+let browserList       = packageJSON.config.browsers;
+let work              = packageJSON.config.tasks;
   
 glob.sync('./tasks/**/*.js').map(file => require(file)({
   packageJSON,
@@ -29,8 +31,8 @@ glob.sync('./tasks/**/*.js').map(file => require(file)({
   sourcemaps
 }));
 
-gulp.task('serve', gulp.series('clean', 'pngSprite', gulp.parallel('html', 'css', 'js', 'fonts', 'svgSprite', 'compress'), gulp.parallel('watch', 'browser')));
+gulp.task('serve', gulp.series('clean', gulp.parallel(...work), gulp.parallel('watch', 'browser')));
 
-gulp.task('build', gulp.series('clean', 'pngSprite', gulp.parallel('html', 'css', 'js', 'fonts', 'svgSprite', 'compress')));
+gulp.task('build', gulp.series('clean', gulp.parallel(...work)));
 
-gulp.task('default', gulp.series('serve')); 
+gulp.task('default', gulp.series('serve'));

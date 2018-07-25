@@ -13,7 +13,6 @@
     "browser-sync": "^2.23.6",
     "browserify": "^15.2.0",
     "del": "^3.0.0",
-    "emitty": "^1.4.0",
     "glob": "^7.1.2",
     "gulp": "^4.0.0",
     "gulp-clean": "^0.4.0",
@@ -45,6 +44,14 @@
       "development": "tmp",
       "production": "build"
     },
+    "tasks": [
+      "html",
+      "css",
+      "js",
+      "fonts",
+      "svgSprite",
+      "compress"
+    ],
     "svg2png": {
       "width": 450,
       "height": 450

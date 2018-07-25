@@ -5,10 +5,13 @@ const fs              = require('fs');
 const path            = require('path');
 const minimist        = require('minimist');
 const ncp             = require('ncp');
+const del             = require('del');
 let args              = minimist(process.argv.slice(2));
 let update            = typeof(args.update) !== 'undefined';
 let templateJSON      = require(path.resolve(__dirname, 'template', 'package.json'));
 let packageJSON       = require(path.resolve(__dirname, project, 'package.json'));
+let tasks             = typeof(args.tasks) !== 'undefined' ? args.tasks.split('|') : false;
+let rTasks            = ['browser', 'clean', 'watch'];
 
 let json = {
   ...packageJSON,
@@ -23,7 +26,8 @@ let json = {
     directories: {
       ...(packageJSON.config && packageJSON.config.directories ? packageJSON.config.directories : {}),
       ...templateJSON.config.directories
-    }   
+    },
+    tasks: tasks ? tasks : templateJSON.config.tasks
   }
 };
 
@@ -39,10 +43,23 @@ if(!fs.existsSync(path.resolve(__dirname, project, 'gulpfile.js'))) {
   });
 }
 
-ncp.ncp(path.resolve(__dirname, 'template', 'tasks'), path.resolve(__dirname, project, 'tasks'), error => {
-  if(error) return console.error('Error: ' + error);
-  console.log('Success: tasks updated');  
-});
+del(path.resolve(__dirname, project, 'tasks'));
+
+if(!tasks) {
+  ncp.ncp(path.resolve(__dirname, 'template', 'tasks'), path.resolve(__dirname, project, 'tasks'), error => {
+    if(error) return console.error('Error: ' + error);
+    console.log('Success: tasks updated');  
+  });
+} else {
+  [...new Set([...rTasks, ...tasks])].forEach(task => {
+    if(fs.existsSync(path.resolve(__dirname, project, task + '.js'))) {
+      ncp.ncp(path.resolve(__dirname, 'template', 'tasks', task + '.js'), path.resolve(__dirname, project, 'tasks', task + '.js'), error => {
+        if(error) return console.error('Error: ' + error);
+        console.log('Success: task ' + task + ' added');  
+      });
+    });
+  });
+}
 
 if(!update) {
   ncp.ncp(path.resolve(__dirname, 'template', 'src'), path.resolve(__dirname, project, 'src'), error => {
