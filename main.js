@@ -43,23 +43,23 @@ if(!fs.existsSync(path.resolve(__dirname, project, 'gulpfile.js'))) {
   });
 }
 
-del(path.resolve(__dirname, project, 'tasks'));
-
-if(!tasks) {
-  ncp.ncp(path.resolve(__dirname, 'template', 'tasks'), path.resolve(__dirname, project, 'tasks'), error => {
-    if(error) return console.error('Error: ' + error);
-    console.log('Success: tasks updated');  
-  });
-} else {
-  [...new Set([...rTasks, ...tasks])].forEach(task => {
-    if(fs.existsSync(path.resolve(__dirname, 'template', 'tasks', task + '.js'))) {
-      ncp.ncp(path.resolve(__dirname, 'template', 'tasks', task + '.js'), path.resolve(__dirname, project, 'tasks', task + '.js'), error => {
-        if(error) return console.error('Error: ' + error);
-        console.log('Success: task ' + task + ' added');  
-      });
-    }
-  });
-}
+del(path.resolve(__dirname, project, 'tasks')).then(paths => {
+  if(!tasks) {
+    ncp.ncp(path.resolve(__dirname, 'template', 'tasks'), path.resolve(__dirname, project, 'tasks'), error => {
+      if(error) return console.error('Error: ' + error);
+      console.log('Success: tasks updated');  
+    });
+  } else {
+    [...new Set([...rTasks, ...tasks])].forEach(task => {
+      if(fs.existsSync(path.resolve(__dirname, 'template', 'tasks', task + '.js'))) {
+        ncp.ncp(path.resolve(__dirname, 'template', 'tasks', task + '.js'), path.resolve(__dirname, project, 'tasks', task + '.js'), error => {
+          if(error) return console.error('Error: ' + error);
+          console.log('Success: task ' + task + ' added');  
+        });
+      }
+    });
+  }
+});
 
 if(!update) {
   ncp.ncp(path.resolve(__dirname, 'template', 'src'), path.resolve(__dirname, project, 'src'), error => {
