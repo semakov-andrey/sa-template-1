@@ -57,7 +57,7 @@ if(!tasks) {
         if(error) return console.error('Error: ' + error);
         console.log('Success: task ' + task + ' added');  
       });
-    });
+    }
   });
 }
 
