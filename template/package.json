@@ -2,7 +2,7 @@
   "scripts": {
     "start": "gulp serve",
     "build": "gulp build --production",
-    "template": "node node_modules/sa-template-1/main.js"
+    "template": "node node_modules/sa-template-1/main.js --update"
   },
   "devDependencies": {
     "minimist": "^1.2.0",

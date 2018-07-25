@@ -13,8 +13,7 @@ var packageJSON     = require('./package.json'),
   source            = packageJSON.config.directories.source,
   target            = packageJSON.config.directories[production ? 'production' : 'development'],
   browserSync	      = require('browser-sync'),
-  browserList       = packageJSON.config.browsers,
-  emitty            = require('emitty').setup(source, 'pug', { makeVinylFile: true });  
+  browserList       = packageJSON.config.browsers;  
   
 glob.sync('./tasks/**/*.js').map(file => require(file)({
   packageJSON,
@@ -27,8 +26,7 @@ glob.sync('./tasks/**/*.js').map(file => require(file)({
   gulpif,
   browserSync,
   browserList,
-  sourcemaps,
-  emitty
+  sourcemaps
 }));
 
 gulp.task('serve', gulp.series('clean', 'pngSprite', gulp.parallel('html', 'css', 'js', 'fonts', 'svgSprite', 'compress'), gulp.parallel('watch', 'browser')));

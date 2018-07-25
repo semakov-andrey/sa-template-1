@@ -5,6 +5,8 @@ const fs              = require('fs');
 const path            = require('path');
 const minimist        = require('minimist');
 const ncp             = require('ncp');
+let args              = minimist(process.argv.slice(2));
+let update            = typeof(args.update) !== 'undefined';
 let templateJSON      = require(path.resolve(__dirname, 'template', 'package.json'));
 let packageJSON       = require(path.resolve(__dirname, project, 'package.json'));
 
@@ -41,6 +43,13 @@ ncp.ncp(path.resolve(__dirname, 'template', 'tasks'), path.resolve(__dirname, pr
   if(error) return console.error('Error: ' + error);
   console.log('Success: tasks updated');  
 });
+
+if(!update) {
+  ncp.ncp(path.resolve(__dirname, 'template', 'src'), path.resolve(__dirname, project, 'src'), error => {
+    if(error) return console.error('Error: ' + error);
+    console.log('Success: source updated');  
+  });
+}
 
 let getGitIgnore = (data = []) => {
   if(!data.length) data = [];
