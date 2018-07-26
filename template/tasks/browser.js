@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = params => {
-  var { gulp, target, browserSync } = params;
+  let { gulp, target, browserSync } = params;
   gulp.task('browser', () => {
     return browserSync({
       open: false,

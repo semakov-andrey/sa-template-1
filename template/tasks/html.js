@@ -1,9 +1,9 @@
 'use strict';
 
-var pug             = require('gulp-pug');
+const pug             = require('gulp-pug');
 
 module.exports = params => {
-  var { gulp, source, target, plumber, notify, gulpif, browserSync } = params;
+  let { gulp, source, target, plumber, notify, gulpif, browserSync } = params;
   gulp.task('html', () => {    
     return gulp.src([
       source + '/**/*.pug',

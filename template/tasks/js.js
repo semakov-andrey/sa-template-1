@@ -1,14 +1,14 @@
-var browserify              = require('browserify'),
-  babelify                  = require('babelify'),
-  uglify                    = require('gulp-uglify'),
-  vsource                   = require('vinyl-source-stream'),
-  buffer                    = require('vinyl-buffer'),
-  util                      = require('gulp-util');
+'use strict';
 
-  'use strict';
+const browserify              = require('browserify');
+const babelify                = require('babelify');
+const uglify                  = require('gulp-uglify');
+const vsource                 = require('vinyl-source-stream');
+const buffer                  = require('vinyl-buffer');
+const util                    = require('gulp-util');
 
-  module.exports = params => {
-  var { gulp, production, source, target, notify, gulpif, browserSync, sourcemaps } = params,
+module.exports = params => {
+  let { gulp, production, source, target, notify, gulpif, browserSync, sourcemaps } = params,
     rebundle = bundler => {
     return bundler.bundle()
     .on('error', notify.onError({
@@ -26,7 +26,7 @@ var browserify              = require('browserify'),
   };
 
   gulp.task('js', () => {
-    var bundler = browserify(source + '/_scripts/main.js', {
+    let bundler = browserify(source + '/_scripts/main.js', {
       debug: true
     }).transform(babelify, {
       presets: ['es2015'],

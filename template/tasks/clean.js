@@ -1,9 +1,9 @@
 'use strict';
 
-var del             = require('del');
+const del             = require('del');
 
 module.exports = params => {
-  var { gulp, target } = params;
+  let { gulp, target } = params;
   gulp.task('clean', () => {
     return del(target + '/**/*');
   });

@@ -1,9 +1,9 @@
 'use strict';
 
-var svg2png         = require('gulp-svg2png');
+const svg2png         = require('gulp-svg2png');
 
 module.exports = params => {
-  var { packageJSON, gulp, source, target, plumber, notify } = params;
+  let { packageJSON, gulp, source, target, plumber, notify } = params;
   gulp.task('svg2png', () => {
     return gulp.src(source + '/_vector/*.svg')
     .pipe(svg2png({

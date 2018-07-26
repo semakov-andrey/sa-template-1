@@ -1,13 +1,13 @@
 'use strict';
 
-var sass            = require('gulp-sass'),
-    postcss         = require('gulp-postcss'),
-    autoprefixer    = require('autoprefixer'),
-    cssnano         = require('gulp-cssnano'),
-    rename          = require('gulp-rename');
+const sass            = require('gulp-sass');
+const postcss         = require('gulp-postcss');
+const autoprefixer    = require('autoprefixer');
+const cssnano         = require('gulp-cssnano');
+const rename          = require('gulp-rename');
 
 module.exports = params => {
-  var { gulp, production, source, target, plumber, notify, gulpif, browserSync, browserList, sourcemaps } = params;
+  let { gulp, production, source, target, plumber, notify, gulpif, browserSync, browserList, sourcemaps } = params;
   gulp.task('css', () => {
     return gulp.src([
       source + '/_styles/*.{sass,scss}',

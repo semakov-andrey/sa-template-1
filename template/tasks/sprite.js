@@ -1,19 +1,19 @@
 'use strict';
 
-var svgSprite       = require('gulp-svg-sprites');
+const svgSprite       = require('gulp-svg-sprites');
 
 module.exports = params => {
-  var { gulp, source, target, browserSync } = params;
-  gulp.task('svgSprite', () => {
+  let { gulp, source, target, browserSync } = params;
+  gulp.task('sprite', () => {
     return gulp.src(source + '/_images/_svg/*.svg')
       .pipe(svgSprite({
         mode: 'symbols',
         svg: { symbols: 'sprite.svg' },
         preview: false,
         asyncTransforms: true,
-        transformData: function (data, config, done) {
+        transformData: (data, config, done) => {
           data.svg = data.svg.map(function(item) {
-            var preserveAspectRatio = /preserveAspectRatio=\"(.*?)\"/.exec(item.data);
+            let preserveAspectRatio = /preserveAspectRatio=\"(.*?)\"/.exec(item.data);
             item.preserveAspectRatio = preserveAspectRatio ? preserveAspectRatio[1] : 'xMidYMid'; 
             return item;          
           });

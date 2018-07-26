@@ -1,11 +1,11 @@
 'use strict';
 
-var imagemin        = require('gulp-imagemin'),
-  pngquant          = require('imagemin-pngquant'),
-  rename            = require('gulp-rename');
+const imagemin        = require('gulp-imagemin');
+const pngquant        = require('imagemin-pngquant');
+const rename          = require('gulp-rename');
 
 module.exports = params => {
-  var { gulp, production, source, target, gulpif, browserSync } = params;
+  let { gulp, production, source, target, gulpif, browserSync } = params;
   gulp.task('compress', () => {
     return gulp.src(source + '/_images/**/*.{jpg,jpeg,gif,png}')
       .pipe(gulpif(production, imagemin({
