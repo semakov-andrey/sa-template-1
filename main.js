@@ -15,8 +15,6 @@ let tasksIndex        = update ? 3 : 2;
 let tasks             = process.argv[tasksIndex] && typeof(process.argv[tasksIndex]) === 'string' ? process.argv[tasksIndex].split('-') : '';
 let tasksDefault      = ['browser', 'clean', 'watch'];
 
-console.log(__dirname);
-
 /* update readme */
 if(!fs.existsSync(path.resolve(__dirname, project, 'readme.md'))) {
   ncp.ncp(path.resolve(__dirname, 'template', 'readme.md'), path.resolve(__dirname, project, 'readme.md'), error => {
