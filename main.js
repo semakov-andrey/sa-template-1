@@ -54,7 +54,7 @@ del(path.resolve(__dirname, project, 'tasks')).then(paths => {
     all.forEach((task, index) => {
       ncp.ncp(path.resolve(__dirname, 'template', 'tasks', task + '.js'), path.resolve(__dirname, project, 'tasks', task + '.js'), error => {
         if(error) return console.error('Error: ' + error);
-        console.log('Success: task ' + task + ' added');
+        if(tasks.indexOf(task) !== -1) console.log('Success: task ' + task + ' added');
       });
     });
   }
