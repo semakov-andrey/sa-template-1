@@ -1,1 +1,9 @@
-@import 'sprite';
+@font-face {
+  font-family: 'visitor';
+  src: url(../fonts/visitor1.woff2) format('woff2'),
+    url(../fonts/visitor1.woff) format('woff');
+}
+
+body {
+  font: 20px/30px 'visitor';
+}

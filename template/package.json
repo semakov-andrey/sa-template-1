@@ -50,8 +50,8 @@
       "css",
       "js",
       "fonts",
+      "image",
       "sprite",
-      "compress",
       "svg2png"
     ],
     "svg2png": {

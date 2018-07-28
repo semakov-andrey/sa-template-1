@@ -6,7 +6,12 @@ const rename          = require('gulp-rename');
 
 module.exports = params => {
   let { gulp, production, source, target, gulpif, browserSync } = params;
-  gulp.task('compress', () => {
+  gulp.task('image', () => {
+    gulp.src([
+      source + '/_images/**/*.{svg}',
+      '!' + source + '/_images/_svg/*.svg'
+    ]).pipe(rename(path => path.dirname = '/'))
+      .pipe(gulp.dest(target + '/images'));
     return gulp.src(source + '/_images/**/*.{jpg,jpeg,gif,png}')
       .pipe(gulpif(production, imagemin({
         progressive: true,
