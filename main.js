@@ -60,6 +60,9 @@ del(path.resolve(__dirname, project, 'tasks')).then(paths => {
 
 /* update configuration */
 let writeConfiguraion = (tasks) => {
+  let specify = {};
+  if(tasks.indexOf('css') != -1) specify.browsers = templateJSON.config.browsers;
+  if(tasks.indexOf('svg2png') != -1) specify.svg2png = templateJSON.config.svg2png;
   let json = {
     ...packageJSON,
     scripts: templateJSON.scripts,
@@ -69,7 +72,7 @@ let writeConfiguraion = (tasks) => {
     },
     config: {
       ...packageJSON.config,
-      ...templateJSON.config,
+      ...specify,
       directories: {
         ...(packageJSON.config && packageJSON.config.directories ? packageJSON.config.directories : {}),
         ...templateJSON.config.directories
