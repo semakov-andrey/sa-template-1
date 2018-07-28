@@ -11,6 +11,7 @@ let args              = minimist(process.argv.slice(2));
 let update            = typeof(args.update) !== 'undefined';
 let templateJSON      = require(path.resolve(__dirname, 'template', 'package.json'));
 let packageJSON       = require(path.resolve(__dirname, project, 'package.json'));
+let generatorJSON     = require(path.resolve(__dirname, 'package.json'));
 let tasksIndex        = update ? 3 : 2;
 let tasks             = process.argv[tasksIndex] && typeof(process.argv[tasksIndex]) === 'string' ? process.argv[tasksIndex].split('-') : '';
 let tasksDefault      = ['browser', 'clean', 'watch'];
@@ -63,12 +64,13 @@ let writeConfiguraion = (tasks) => {
   let specify = {};
   if(tasks.indexOf('css') != -1) specify.browsers = templateJSON.config.browsers;
   if(tasks.indexOf('svg2png') != -1) specify.svg2png = templateJSON.config.svg2png;
+  ['ncp'].forEach(value => delete generatorJSON.dependencies[value]);
   let json = {
     ...packageJSON,
     scripts: templateJSON.scripts,
     devDependencies: {
       ...packageJSON.devDependencies,
-      ...templateJSON.devDependencies,
+      ...generatorJSON.dependencies,
     },
     config: {
       ...packageJSON.config,

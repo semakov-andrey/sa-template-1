@@ -5,7 +5,6 @@ const babelify                = require('babelify');
 const uglify                  = require('gulp-uglify');
 const vsource                 = require('vinyl-source-stream');
 const buffer                  = require('vinyl-buffer');
-const util                    = require('gulp-util');
 
 module.exports = params => {
   let { gulp, production, source, target, notify, gulpif, browserSync, sourcemaps } = params,
