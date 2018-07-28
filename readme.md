@@ -23,19 +23,19 @@
 * `svg2png` - конвертация svg в png
 
 ### Используемые технологии ###
-- [nodejs](https://nodejs.org/)
-- [gulp](https://gulpjs.com/)
-- [pug](https://pugjs.org/) + [gulp-pug](https://github.com/gulp-community/gulp-pug)
-- [sass](https://sass-lang.com/) + [node-sass](https://github.com/sass/node-sass) + [gulp-sass](https://github.com/dlmanning/gulp-sass)
-- [postcss](https://github.com/postcss/postcss) + [gulp-postcss](https://github.com/postcss/gulp-postcss) + [autoprefixer](https://autoprefixer.github.io/ru/)
-- [browserify](http://browserify.org/) + [babel](https://babeljs.io/) + [babelify](https://github.com/babel/babelify)
-- [gulp-svg-sprites](https://github.com/shakyshane/gulp-svg-sprites)
-- [ttf2woff](https://github.com/fontello/ttf2woff) + [gulp-ttf2woff](https://github.com/nfroidure/gulp-ttf2woff)
-- [ttf2woff2](https://github.com/nfroidure/ttf2woff2) + [gulp-ttf2woff2](https://github.com/nfroidure/gulp-ttf2woff2)
-- [imagemin](https://github.com/imagemin/imagemin) + [gulp-imagemin](https://github.com/sindresorhus/gulp-imagemin) + [imagemin-pngquant](https://github.com/imagemin/imagemin-pngquant)
-- [svg2ng](https://github.com/domenic/svg2png) + [gulp-svg2png](https://github.com/akoenig/gulp-svg2png)
+* [nodejs](https://nodejs.org/)
+* [gulp](https://gulpjs.com/)
+* [pug](https://pugjs.org/) + [gulp-pug](https://github.com/gulp-community/gulp-pug)
+* [sass](https://sass-lang.com/) + [node-sass](https://github.com/sass/node-sass) + [gulp-sass](https://github.com/dlmanning/gulp-sass)
+* [postcss](https://github.com/postcss/postcss) + [gulp-postcss](https://github.com/postcss/gulp-postcss) + [autoprefixer](https://autoprefixer.github.io/ru/)
+* [browserify](http://browserify.org/) + [babel](https://babeljs.io/) + [babelify](https://github.com/babel/babelify)
+* [gulp-svg-sprites](https://github.com/shakyshane/gulp-svg-sprites)
+* [ttf2woff](https://github.com/fontello/ttf2woff) + [gulp-ttf2woff](https://github.com/nfroidure/gulp-ttf2woff)
+* [ttf2woff2](https://github.com/nfroidure/ttf2woff2) + [gulp-ttf2woff2](https://github.com/nfroidure/gulp-ttf2woff2)
+* [imagemin](https://github.com/imagemin/imagemin) + [gulp-imagemin](https://github.com/sindresorhus/gulp-imagemin) + [imagemin-pngquant](https://github.com/imagemin/imagemin-pngquant)
+* [svg2ng](https://github.com/domenic/svg2png) + [gulp-svg2png](https://github.com/akoenig/gulp-svg2png)
 
-# Будущие доработки генератора:
-4. вынести все директории в конфиг
-7. source - сделать тестовый сайт
-8. создать генератор модулей
+### Будущие доработки генератора ###
+* вынести все директории в конфиг
+* source - сделать тестовый сайт
+* создать генератор модулей
