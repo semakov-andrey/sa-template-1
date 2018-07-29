@@ -70,8 +70,8 @@ let writeConfiguraion = (tasks) => {
       ...generatorJSON.dependencies,
     },
     config: {
-      ...packageJSON.config,
       ...specify,
+      ...packageJSON.config,
       directories: {
         ...templateJSON.config.directories,
         ...(packageJSON.config && packageJSON.config.directories ? packageJSON.config.directories : {})
