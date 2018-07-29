@@ -76,8 +76,8 @@ let writeConfiguraion = (tasks) => {
       ...packageJSON.config,
       ...specify,
       directories: {
-        ...(packageJSON.config && packageJSON.config.directories ? packageJSON.config.directories : {}),
-        ...templateJSON.config.directories
+        ...templateJSON.config.directories,
+        ...(packageJSON.config && packageJSON.config.directories ? packageJSON.config.directories : {})
       },
       tasks: tasks
     }
@@ -90,7 +90,7 @@ let writeConfiguraion = (tasks) => {
 }
 
 /* update source */
-if(!update) {
+if(!fs.existsSync(path.resolve(__dirname, project, 'src'))) {
   ncp.ncp(path.resolve(__dirname, 'template', 'src'), path.resolve(__dirname, project, 'src'), error => {
     if(error) return console.error('Error: ' + error);
     console.log('Success: source updated');  
