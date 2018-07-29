@@ -3,12 +3,11 @@
 const pug             = require('gulp-pug');
 
 module.exports = params => {
-  let { gulp, source, target, plumber, notify, gulpif, browserSync } = params;
+  let { gulp, source, target, dirs, plumber, notify, gulpif, browserSync } = params;
+  let input = source + '/' + dirs.html[0] + '/*.pug';
+  let output = target + '/' + dirs.html[1];
   gulp.task('html', () => {    
-    return gulp.src([
-      source + '/**/*.pug',
-      '!' + source + '/{**/\_*,**/\_*/**}'
-    ])
+    return gulp.src(input)
     .pipe(plumber({
       errorHandler: notify.onError({
         sound: false,
@@ -19,7 +18,7 @@ module.exports = params => {
     .pipe(pug({
       pretty: true
     }))
-    .pipe(gulp.dest(target))
+    .pipe(gulp.dest(output))
     .on('end', () => {
       browserSync.reload();
     });

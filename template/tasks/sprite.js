@@ -4,7 +4,7 @@ const svgSprite       = require('gulp-svg-sprites');
 const svgo            = require('gulp-svgo');
 
 module.exports = params => {
-  let { gulp, production, source, target, browserSync } = params;
+  let { gulp, production, source, target, dirs, browserSync } = params;
   let template = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="0" height="0" style="position: absolute;">
 <% _.forEach(svg, function(svgItem) { %>
   <symbol id="<%= svgItem.name %>" viewBox="<%= svgItem.viewBox %>"<%= (svgItem.preserveAspectRatio ? ' preserveAspectRatio="' + svgItem.preserveAspectRatio + '"' : '') %>>
@@ -13,7 +13,9 @@ module.exports = params => {
 <% }); %>
 </svg>`;
   gulp.task('sprite', () => {
-    return gulp.src(source + '/_images/_svg/*.svg')
+    let input = source + '/' + dirs.sprite[0] + '/*.svg';
+    let output = target + '/' + dirs.sprite[1];
+    return gulp.src(input)
     .pipe(svgo())
     .pipe(svgSprite({
       mode: 'symbols',
@@ -32,7 +34,7 @@ module.exports = params => {
         symbols: production ? template.replace(/[\r\n]/g, '').replace(/[\s]+\s\</g, '<') : template
       }
     }))
-    .pipe(gulp.dest(target + '/images/'))
+    .pipe(gulp.dest(output))
     .on('end', browserSync.reload);
   });
 };

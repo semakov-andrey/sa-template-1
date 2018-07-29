@@ -8,14 +8,23 @@
     "directories": {
       "source": "src",
       "development": "tmp",
-      "production": "build"
+      "production": "build",
+      "tasks": {
+        "html": ["", ""],
+        "css": ["_styles", "styles", "main"],
+        "js": ["_scripts", "scripts", "main"],
+        "fonts": ["_fonts", "fonts"],
+        "images": ["_images", "images"],
+        "sprite": ["_images/_svg", "images"],
+        "svg2png": ["_vector", "raster"]
+      }
     },
     "tasks": [
       "html",
       "css",
       "js",
       "fonts",
-      "image",
+      "images",
       "sprite",
       "svg2png"
     ],

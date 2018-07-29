@@ -7,8 +7,10 @@ const vsource                 = require('vinyl-source-stream');
 const buffer                  = require('vinyl-buffer');
 
 module.exports = params => {
-  let { gulp, production, source, target, notify, gulpif, browserSync, sourcemaps } = params,
-    rebundle = bundler => {
+  let { gulp, production, source, target, dirs, notify, gulpif, browserSync, sourcemaps } = params;
+  let input = source + '/' + dirs.js[0] + '/' + dirs.js[2] + '.js';
+  let output = target + '/' + dirs.js[1];
+  let rebundle = bundler => {
     return bundler.bundle()
     .on('error', notify.onError({
       sound: false,
@@ -20,12 +22,12 @@ module.exports = params => {
     .pipe(gulpif(!production, sourcemaps.init()))
     .pipe(gulpif(production, uglify()))
     .pipe(gulpif(!production, sourcemaps.write('.')))
-    .pipe(gulp.dest(target + '/scripts'))
+    .pipe(gulp.dest(output))
     .on('end', () => browserSync.reload());
   };
 
   gulp.task('js', () => {
-    let bundler = browserify(source + '/_scripts/main.js', {
+    let bundler = browserify(input, {
       debug: true
     }).transform(babelify, {
       presets: ['es2015'],
