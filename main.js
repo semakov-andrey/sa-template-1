@@ -7,13 +7,10 @@ const minimist        = require('minimist');
 const ncp             = require('ncp');
 const del             = require('del');
 
-let args              = minimist(process.argv.slice(2));
-let update            = typeof(args.update) !== 'undefined';
 let templateJSON      = require(path.resolve(__dirname, 'template', 'package.json'));
 let packageJSON       = require(path.resolve(__dirname, project, 'package.json'));
 let generatorJSON     = require(path.resolve(__dirname, 'package.json'));
-let tasksIndex        = update ? 3 : 2;
-let tasks             = process.argv[tasksIndex] && typeof(process.argv[tasksIndex]) === 'string' ? process.argv[tasksIndex].split('-') : '';
+let tasks             = process.argv[2] && typeof(process.argv[2]) === 'string' ? process.argv[2].split('-') : '';
 let tasksDefault      = ['browser', 'clean', 'watch'];
 
 /* update readme */

@@ -2,7 +2,7 @@
   "scripts": {
     "start": "gulp serve",
     "build": "gulp build --production",
-    "template": "node node_modules/sa-template-1/main.js --update"
+    "template": "node node_modules/sa-template-1/main.js"
   },
   "config": {
     "directories": {
