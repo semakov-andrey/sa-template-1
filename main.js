@@ -16,7 +16,7 @@ let tasksDefault      = ['browser', 'clean', 'watch'];
 /* update readme */
 if(!fs.existsSync(path.resolve(__dirname, project, 'readme.md'))) {
   ncp.ncp(path.resolve(__dirname, 'template', 'readme.md'), path.resolve(__dirname, project, 'readme.md'), error => {
-    if(error) return console.error('Error: ' + error);
+    if(error) return console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error);
     console.log('Success: readme updated');  
   });
 }
@@ -24,7 +24,7 @@ if(!fs.existsSync(path.resolve(__dirname, project, 'readme.md'))) {
 /* update task-runner */
 if(!fs.existsSync(path.resolve(__dirname, project, 'gulpfile.js'))) {
   ncp.ncp(path.resolve(__dirname, 'template', 'gulpfile.js'), path.resolve(__dirname, project, 'gulpfile.js'), error => {
-    if(error) return console.error('Error: ' + error);
+    if(error) return console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error);
     console.log('Success: task-runner updated');
   });
 }
@@ -33,7 +33,7 @@ if(!fs.existsSync(path.resolve(__dirname, project, 'gulpfile.js'))) {
 del(path.resolve(__dirname, project, 'tasks')).then(paths => {
   if(!tasks) {
     ncp.ncp(path.resolve(__dirname, 'template', 'tasks'), path.resolve(__dirname, project, 'tasks'), error => {
-      if(error) return console.error('Error: ' + error);
+      if(error) return console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error);
       console.log('Success: tasks updated'); 
       writeConfiguraion(templateJSON.config.tasks); 
     });
@@ -49,7 +49,7 @@ del(path.resolve(__dirname, project, 'tasks')).then(paths => {
     fs.mkdirSync(path.resolve(__dirname, project, 'tasks'));
     all.forEach((task, index) => {
       ncp.ncp(path.resolve(__dirname, 'template', 'tasks', task + '.js'), path.resolve(__dirname, project, 'tasks', task + '.js'), error => {
-        if(error) return console.error('Error: ' + error);
+        if(error) return console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error);
         if(tasks.indexOf(task) !== -1) console.log('Success: task ' + task + ' added');
       });
     });
@@ -81,7 +81,7 @@ let writeConfiguraion = (tasks) => {
   };
   
   fs.writeFile(path.resolve(__dirname, project, 'package.json'), JSON.stringify(json, null, 2), 'utf8', error => {
-    if(error) return console.error('Error: ' + error);
+    if(error) return console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error);
     console.log('Success: configuration updated');
   });
 }
@@ -89,7 +89,7 @@ let writeConfiguraion = (tasks) => {
 /* update source */
 if(!fs.existsSync(path.resolve(__dirname, project, 'src'))) {
   ncp.ncp(path.resolve(__dirname, 'template', 'src'), path.resolve(__dirname, project, 'src'), error => {
-    if(error) return console.error('Error: ' + error);
+    if(error) return console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error);
     console.log('Success: source updated');  
   });
 }
@@ -99,7 +99,7 @@ let getGitIgnore = (data = []) => {
   if(!data.length) data = [];
   if(fs.existsSync(path.resolve(__dirname, 'template', 'gitignore'))) {
     fs.readFile(path.resolve(__dirname, 'template', 'gitignore'), 'utf8', (error, newData) => {
-      if(error) return console.error('Error: ' + error);
+      if(error) return console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error);
       writeGitIgnore(data, newData.split('\r\n'));
     });
   } else writeGitIgnore(data);
@@ -109,14 +109,14 @@ let writeGitIgnore = (data, newData = []) => {
   if(!newData.length) newData = [];
   let gitignore = [...new Set([...data, ...newData])].join('\r\n');
   fs.writeFile(path.resolve(__dirname, project, '.gitignore'), gitignore, 'utf8', error => {
-    if(error) return console.error('Error: ' + error);
+    if(error) return console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error);
     console.log('Success: gitignore updated');
   });
 };
 
 if(fs.existsSync(path.resolve(__dirname, project, '.gitignore'))) {
   fs.readFile(path.resolve(__dirname, project, '.gitignore'), 'utf8', (error, data) => {
-    if(error) return console.error('Error: ' + error);
+    if(error) return console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error);
     getGitIgnore(data.split('\r\n'));
   });
 } else getGitIgnore();
