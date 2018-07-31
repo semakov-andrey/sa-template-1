@@ -13,7 +13,7 @@ if(newModule !== '') {
   if(fs.existsSync(path.resolve(__dirname, project, 'src', '_modules'))) {
     if(!fs.existsSync(path.resolve(__dirname, project, 'src', '_modules', newModule))) {
       fs.mkdirSync(path.resolve(__dirname, project, 'src', '_modules', newModule));
-      fs.writeFile(path.resolve(__dirname, project, 'src', '_modules', newModule, newModule + '.pug'), `mixin ${newModule}()\r\n\t.${newModule}`, 'utf8', error => {
+      fs.writeFile(path.resolve(__dirname, project, 'src', '_modules', newModule, newModule + '.pug'), `mixin ${newModule}\r\n\t.${newModule}`, 'utf8', error => {
         if(error) return console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error);
         console.log('Success: .pug file created');
       });

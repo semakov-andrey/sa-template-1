@@ -1,9 +1,41 @@
-@font-face {
-  font-family: 'visitor';
-  src: url(../fonts/visitor1.woff2) format('woff2'),
-    url(../fonts/visitor1.woff) format('woff');
+@import 'fonts';
+@import '../_modules/header/header';
+@import '../_modules/footer/footer';
+
+html,
+body {
+  width: 100%;
+  height: 100%;
 }
 
 body {
-  font: 20px/30px 'visitor';
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font: 16px/1.5 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.main {
+  flex: 1 0 auto;  
+  max-width: 1000px;
+  width: 100%;
+  padding: 50px 20px;
+}
+
+a {
+  color: blue;
+  text-decoration: none;
+  transition: color .3s;
+
+  &:hover {
+    color: red;
+  }
 }
