@@ -49,5 +49,4 @@
 * [svg2ng](https://github.com/domenic/svg2png) + [gulp-svg2png](https://github.com/akoenig/gulp-svg2png)
 
 ### Будущие доработки генератора ###
-* Необходимо сделать тестовые исходники.
 * Необходимо обновить используемые пакеты.

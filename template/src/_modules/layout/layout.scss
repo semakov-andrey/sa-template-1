@@ -27,7 +27,7 @@ body {
   flex: 1 0 auto;  
   max-width: 1000px;
   width: 100%;
-  padding: 50px 20px;
+  padding: 30px 20px 50px;
 }
 
 a {
@@ -54,11 +54,26 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  max-height: 300px;
+
+  @media (max-width: 567.98px) {
+    flex-direction: column;
+    max-height: 1000px;
+  }
 
   img {
     display: block;
     flex-shrink: 0;
     width: calc((100% - 40px)/3);
+
+    @media (max-width: 567.98px) {
+      width: 100%;
+    }
+
+    &:not(:first-child) {
+      @media (max-width: 567.98px) {
+        margin-top: 20px;
+      }
+    }
   }
 }
