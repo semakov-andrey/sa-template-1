@@ -30,7 +30,7 @@ module.exports = params => {
     let bundler = browserify(input, {
       debug: true
     }).transform(babelify, {
-      presets: ['es2015'],
+      presets: ['env'],
       sourceMaps: true
     });
     return rebundle(bundler);
