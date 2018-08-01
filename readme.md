@@ -2,10 +2,10 @@
 ###### Генератор шаблона для вёрстки сайта. ######
 
 ### Установка ###
-`%SystemRoot%/system32/WindowsPowerShell/v1.0` - в PATH  
+`%SystemRoot%/system32/WindowsPowerShell/v1.0` - проверить в PATH  
 `npm install -g gulp-cli` 
 `npm install -g node-gyp`   
-`npm install -g --production windows-build-tools` - запуск от администратора  
+`npm install -g windows-build-tools --add-python-to-path='true'` - запуск от администратора  
 `npm init --yes`  
 `npm install sa-template-1 --save-dev`  
 `node node_modules/sa-template-1/main.js`  
@@ -51,6 +51,3 @@
 * [ttf2woff2](https://github.com/nfroidure/ttf2woff2) + [gulp-ttf2woff2](https://github.com/nfroidure/gulp-ttf2woff2)
 * [imagemin](https://github.com/imagemin/imagemin) + [gulp-imagemin](https://github.com/sindresorhus/gulp-imagemin) + [imagemin-pngquant](https://github.com/imagemin/imagemin-pngquant)
 * [svg2ng](https://github.com/domenic/svg2png) + [gulp-svg2png](https://github.com/akoenig/gulp-svg2png)
-
-### Будущие доработки генератора ###
-* Необходимо обновить используемые пакеты.
