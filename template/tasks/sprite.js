@@ -16,7 +16,11 @@ module.exports = params => {
     let input = source + '/' + dirs.sprite[0] + '/*.svg';
     let output = target + '/' + dirs.sprite[1];
     return gulp.src(input)
-    .pipe(svgo())
+    .pipe(svgo({
+      plugins: [{
+        removeViewBox: false
+      }]
+    }))
     .pipe(svgSprite({
       mode: 'symbols',
       svg: { symbols: 'sprite.svg' },
