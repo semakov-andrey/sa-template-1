@@ -34,8 +34,7 @@
       "height": 450
     },
     "browsers": [
-      "> 5%",
-      "last 2 versions"
+      "> 0.5%"
     ]
   }
 }
