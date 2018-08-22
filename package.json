@@ -1,6 +1,6 @@
 {
   "name": "sa-template-1",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "sa-template-1",
   "main": "main.js",
   "repository": {
@@ -42,7 +42,7 @@
     "node-sass": "^4.9.2",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
-  }, 
+  },
   "scripts": {
     "sa-template-1": "node main.js"
   }
