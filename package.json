@@ -42,8 +42,5 @@
     "node-sass": "^4.9.2",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
-  },
-  "scripts": {
-    "sa-template-1": "node main.js"
   }
 }
