@@ -4,8 +4,7 @@
 ### Основные команды
 `npm run start` - development - разработка  
 `npm run build` - production - сборка  
-`npm run template` - обновление шаблона  
-`npm run template html-css-js` - подключение конкретных тасков  
+`npm run template` - обновление шаблона
 `npm run module название` - создание модуля
 
 ### Список тасков ###
