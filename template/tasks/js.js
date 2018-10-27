@@ -30,7 +30,8 @@ module.exports = params => {
     let bundler = browserify(input, {
       debug: true
     }).transform(babelify, {
-      presets: ['env'],
+      presets: ['@babel/preset-env'],
+      plugins: ["@babel/plugin-transform-object-assign"],
       sourceMaps: true
     });
     return rebundle(bundler);
