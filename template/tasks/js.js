@@ -31,7 +31,7 @@ module.exports = params => {
       debug: true
     }).transform(babelify, {
       presets: ['@babel/preset-env'],
-      plugins: ["@babel/plugin-transform-object-assign"],
+      plugins: ['@babel/plugin-transform-object-assign'],
       sourceMaps: true
     });
     return rebundle(bundler);
