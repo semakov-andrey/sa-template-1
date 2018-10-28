@@ -1,6 +1,6 @@
 'use strict';
 
-import Icon from '../_modules/icon/icon';
+import Icon from '../modules/icon/icon';
 
 (() => {
   new Icon();
