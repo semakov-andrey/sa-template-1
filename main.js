@@ -43,10 +43,9 @@ let json = {
     ...generatorJSON.dependencies,
   },
   config: {
-    ...{
-      browsers: templateJSON.config.browsers,
-      svg2png: templateJSON.config.svg2png
-    },
+    entries: templateJSON.config.entries,
+    browsers: templateJSON.config.browsers,
+    svg2png: templateJSON.config.svg2png,
     ...packageJSON.config,
     directories: {
       ...templateJSON.config.directories,

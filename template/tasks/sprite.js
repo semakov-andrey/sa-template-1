@@ -12,15 +12,10 @@ module.exports = params => {
   </symbol>
 <% }); %>
 </svg>`;
-  gulp.task('sprite', () => {
-    let input = source + '/' + dirs.sprite[0] + '/*.svg';
-    let output = target + '/' + dirs.sprite[1];
-    return gulp.src(input)
-    .pipe(svgo({
-      plugins: [{
-        removeViewBox: false
-      }]
-    }))
+  let input = `${source}/${dirs.sprite[0]}/*.svg`;
+  let output = `${target}/${dirs.sprite[1]}`;
+  gulp.task('sprite', () => gulp.src(input)
+    .pipe(svgo({ plugins: [{ removeViewBox: false }] }))
     .pipe(svgSprite({
       mode: 'symbols',
       svg: { symbols: 'sprite.svg' },
@@ -39,6 +34,5 @@ module.exports = params => {
       }
     }))
     .pipe(gulp.dest(output))
-    .on('end', browserSync.reload);
-  });
+    .on('end', () => browserSync.reload()));
 };

@@ -7,11 +7,10 @@ const vsource                 = require('vinyl-source-stream');
 const buffer                  = require('vinyl-buffer');
 
 module.exports = params => {
-  let { gulp, production, source, target, dirs, notify, gulpif, browserSync, sourcemaps } = params;
-  let input = source + '/' + dirs.js[0] + '/' + dirs.js[2] + '.js';
-  let output = target + '/' + dirs.js[1];
-  let rebundle = bundler => {
-    return bundler.bundle()
+  let { gulp, production, source, target, dirs, entries, notify, gulpif, browserSync, sourcemaps } = params;
+  let input = entries.css.map(value => `${source}/${dirs.js[0]}/${value}.js`);
+  let output = `${target}/${dirs.js[1]}`;
+  let rebundle = bundler => bundler.bundle()
     .on('error', notify.onError({
       sound: false,
       title: 'js',
@@ -24,16 +23,11 @@ module.exports = params => {
     .pipe(gulpif(!production, sourcemaps.write('.')))
     .pipe(gulp.dest(output))
     .on('end', () => browserSync.reload());
-  };
-
-  gulp.task('js', () => {
-    let bundler = browserify(input, {
-      debug: true
-    }).transform(babelify, {
-      presets: ['@babel/preset-env'],
-      plugins: ['@babel/plugin-transform-object-assign'],
-      sourceMaps: true
-    });
-    return rebundle(bundler);
-  });
+  gulp.task('js', () => rebundle(browserify(input, {
+    debug: true
+  }).transform(babelify, {
+    presets: ['@babel/preset-env'],
+    plugins: ['@babel/plugin-transform-object-assign'],
+    sourceMaps: true
+  })));
 };

@@ -15,6 +15,7 @@ let production        = typeof(args.production) !== 'undefined';
 let source            = packageJSON.config.directories.source;
 let target            = packageJSON.config.directories[production ? 'production' : 'development'];
 let dirs              = packageJSON.config.directories.tasks;
+let entries           = packageJSON.config.entries;
 let browserList       = packageJSON.config.browsers;
 let work              = packageJSON.config.tasks;
   
@@ -25,6 +26,7 @@ glob.sync('./tasks/**/*.js').map(file => require(file)({
   source,
   target,
   dirs,
+  entries,
   plumber,
   notify,
   gulpif,

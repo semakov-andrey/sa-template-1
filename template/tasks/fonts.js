@@ -5,31 +5,18 @@ const ttf2woff2     = require('gulp-ttf2woff2');
 
 module.exports = params => {
   let { gulp, source, target, dirs, browserSync } = params;  
-  let input1 = source + '/' + dirs.fonts[0] + '/*.{woff,woff2}'; 
-  let input2 = source + '/' + dirs.fonts[0] + '/*.ttf';
-  let output = target + '/' + dirs.fonts[1];
-  gulp.task('fonts', () => {
-    return new Promise((resolve, reject) => {
-      let fontsCopy = () => {
-        return gulp.src(input1)
-          .pipe(gulp.dest(output));
-      };
-      let fontsWoff = () => {
-        return gulp.src(input2)
-          .pipe(ttf2woff())
-          .pipe(gulp.dest(output));
-      };
-      let fontsWoff2 = () => {
-        return gulp.src(input2)
-          .pipe(ttf2woff2())
-          .pipe(gulp.dest(output));
-      };
-      let fontsDone = done => {
-        browserSync.reload();
-        resolve();
-        done();
-      };
-      gulp.series(gulp.parallel(fontsCopy, fontsWoff, fontsWoff2), fontsDone)();
-    });
-  });
+  let input1 = `${source}/${dirs.fonts[0]}/*.{woff,woff2}`; 
+  let input2 = `${source}/${dirs.fonts[0]}/*.ttf`;
+  let output = `${target}/${dirs.fonts[1]}`;
+  gulp.task('fonts', () => new Promise((resolve, reject) => {
+    let fontsCopy  = () => gulp.src(input1).pipe(gulp.dest(output));
+    let fontsWoff  = () => gulp.src(input2).pipe(ttf2woff()).pipe(gulp.dest(output));
+    let fontsWoff2 = () => gulp.src(input2).pipe(ttf2woff2()).pipe(gulp.dest(output));
+    let fontsDone  = done => {
+      browserSync.reload();
+      resolve();
+      done();
+    };
+    gulp.series(gulp.parallel(fontsCopy, fontsWoff, fontsWoff2), fontsDone)();
+  }));
 };
