@@ -49,7 +49,11 @@ let json = {
     ...packageJSON.config,
     directories: {
       ...templateJSON.config.directories,
-      ...(packageJSON.config && packageJSON.config.directories ? packageJSON.config.directories : {})
+      ...(packageJSON.config && packageJSON.config.directories ? packageJSON.config.directories : {}),
+      tasks: {
+        ...templateJSON.config.directories.tasks,
+        ...(packageJSON.config && packageJSON.config.directories && packageJSON.config.directories.tasks ? packageJSON.config.directories.tasks : {}),
+      }
     },
     tasks: [...new Set([...(packageJSON.config && packageJSON.config.tasks ? packageJSON.config.tasks : []), ...templateJSON.config.tasks])]
   }
