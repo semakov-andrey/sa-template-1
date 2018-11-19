@@ -10,7 +10,7 @@ module.exports = params => {
     `${source}/${dirs.images[0]}/**/*.svg`,
     `!${source}/${dirs.sprite[0]}/*.svg`
   ];
-  let input2 = `${source}/${dirs.images[0]}/**/*.{jpg,jpeg,gif,png}`;
+  let input2 = `${source}/${dirs.images[0]}/**/*.{jpg,jpeg,gif,png,mp4}`;
   let output = `${target}/${dirs.images[1]}`;
   gulp.task('images', () => new Promise((resolve, reject) => {
     let imagesCopy = () => gulp.src(input1).pipe(rename(path => path.dirname = '/'))

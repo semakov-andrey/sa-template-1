@@ -20,12 +20,10 @@ if(!fs.existsSync(path.resolve(__dirname, project, 'readme.md'))) {
 }
 
 /* update task-runner */
-if(!fs.existsSync(path.resolve(__dirname, project, 'gulpfile.js'))) {
-  ncp.ncp(path.resolve(__dirname, 'template', 'gulpfile.js'), path.resolve(__dirname, project, 'gulpfile.js'), error => {
-    if(error) return console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error);
-    console.log('Success: task-runner updated');
-  });
-}
+ncp.ncp(path.resolve(__dirname, 'template', 'gulpfile.js'), path.resolve(__dirname, project, 'gulpfile.js'), error => {
+  if(error) return console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error);
+  console.log('Success: task-runner updated');
+});
 
 /* update tasks */
 ncp.ncp(path.resolve(__dirname, 'template', 'tasks'), path.resolve(__dirname, project, 'tasks'), error => {
