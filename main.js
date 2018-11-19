@@ -45,7 +45,6 @@ let json = {
   config: {
     entries: templateJSON.config.entries,
     browsers: templateJSON.config.browsers,
-    svg2png: templateJSON.config.svg2png,
     ...packageJSON.config,
     directories: {
       ...templateJSON.config.directories,

@@ -16,8 +16,7 @@
         "js": ["scripts", "scripts"],
         "fonts": ["fonts", "fonts"],
         "images": ["images", "images"],
-        "sprite": ["images/svg", "images"],
-        "svg2png": ["vector", "raster"]
+        "sprite": ["images/svg", "images"]
       }
     },
     "entries": {
@@ -30,13 +29,8 @@
       "js",
       "fonts",
       "images",
-      "sprite",
-      "svg2png"
+      "sprite"
     ],
-    "svg2png": {
-      "width": 450,
-      "height": 450
-    },
     "browsers": [
       "> 0.5%"
     ]

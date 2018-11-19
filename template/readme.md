@@ -14,7 +14,6 @@
 * `fonts` - преобразование ttf в woff, woff2
 * `compress` - сжатие изображений jpg, png
 * `sprite` - генерация svg спрайта
-* `svg2png` - конвертация svg в png
 
 ### Используемые технологии ###
 * [nodejs](https://nodejs.org/)
@@ -27,4 +26,3 @@
 * [ttf2woff](https://github.com/fontello/ttf2woff) + [gulp-ttf2woff](https://github.com/nfroidure/gulp-ttf2woff)
 * [ttf2woff2](https://github.com/nfroidure/ttf2woff2) + [gulp-ttf2woff2](https://github.com/nfroidure/gulp-ttf2woff2)
 * [imagemin](https://github.com/imagemin/imagemin) + [gulp-imagemin](https://github.com/sindresorhus/gulp-imagemin) + [imagemin-pngquant](https://github.com/imagemin/imagemin-pngquant)
-* [svg2ng](https://github.com/domenic/svg2png) + [gulp-svg2png](https://github.com/akoenig/gulp-svg2png)
