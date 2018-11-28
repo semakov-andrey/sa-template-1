@@ -10,7 +10,7 @@
   "author": "Semakov Andrey",
   "license": "ISC",
   "scripts": {
-    "install": "node node_modules/sa-template-1/main.js"
+    "install": "node main.js"
   },
   "dependencies": {
     "@babel/core": "^7.1.2",
