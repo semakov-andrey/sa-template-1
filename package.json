@@ -9,6 +9,9 @@
   },
   "author": "Semakov Andrey",
   "license": "ISC",
+  "scripts": {
+    "install": "node node_modules/sa-template-1/main.js"
+  },
   "dependencies": {
     "@babel/core": "^7.1.2",
     "@babel/plugin-transform-object-assign": "^7.0.0",
