@@ -4,7 +4,6 @@ const sass            = require('gulp-sass');
 const postcss         = require('gulp-postcss');
 const autoprefixer    = require('autoprefixer');
 const cssnano         = require('gulp-cssnano');
-const rename          = require('gulp-rename');
 
 module.exports = params => {
   let { gulp, production, source, target, dirs, entries, plumber, notify, gulpif, browserSync, browserList, sourcemaps } = params;
