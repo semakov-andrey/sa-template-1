@@ -5,6 +5,8 @@ const fs              = require('fs');
 const path            = require('path');
 const ncp             = require('ncp');
 
+if(path.basename(path.resolve(__dirname, '../')) !== 'node_modules') return;
+
 let templateJSON      = require('./package.json');
 let packageJSON       = require(`${project}package.json`);
 
