@@ -1,6 +1,6 @@
 {
   "name": "sa-template-1",
-  "version": "2.5.0",
+  "version": "3.0.0",
   "description": "sa-template-1",
   "main": "main.js",
   "repository": {
@@ -21,17 +21,39 @@
       "development": "tmp",
       "production": "build",
       "tasks": {
-        "html": ["pages", ""],
-        "css": ["styles", "styles"],
-        "js": ["scripts", "scripts"],
-        "fonts": ["fonts", "fonts"],
-        "images": ["images", "images"],
-        "sprite": ["images/svg", "images"]
+        "html": [
+          "pages",
+          ""
+        ],
+        "css": [
+          "styles",
+          "styles"
+        ],
+        "js": [
+          "scripts",
+          "scripts"
+        ],
+        "fonts": [
+          "fonts",
+          "fonts"
+        ],
+        "images": [
+          "images",
+          "images"
+        ],
+        "sprite": [
+          "images/svg",
+          "images"
+        ]
       }
     },
     "entries": {
-      "css": ["main"],
-      "js": ["main"]
+      "css": [
+        "main"
+      ],
+      "js": [
+        "main"
+      ]
     },
     "tasks": [
       "html",
