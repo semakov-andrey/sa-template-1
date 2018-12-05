@@ -4,11 +4,7 @@
 ### Установка ###
 - `npm init --yes`  
 - `npm install -g gulp-cli`
-- `npm install sa-template-1 --save-dev`  
-- `node node_modules/sa-template-1/main.js`
-
-### Обновление ###
-- `npm run template`   
+- `npm install sa-template-1 --save-dev`
 
 ### Особенности установки/обновления ###
 - Копируются, если не существуют: readme.md, папка src
