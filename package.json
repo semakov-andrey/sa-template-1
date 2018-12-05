@@ -10,7 +10,40 @@
   "author": "Semakov Andrey",
   "license": "ISC",
   "scripts": {
-    "install": "node main.js"
+    "install": "node install.js",
+    "module": "node module.js",
+    "start": "gulp serve",
+    "build": "gulp build --production"
+  },
+  "config": {
+    "directories": {
+      "source": "src",
+      "development": "tmp",
+      "production": "build",
+      "tasks": {
+        "html": ["pages", ""],
+        "css": ["styles", "styles"],
+        "js": ["scripts", "scripts"],
+        "fonts": ["fonts", "fonts"],
+        "images": ["images", "images"],
+        "sprite": ["images/svg", "images"]
+      }
+    },
+    "entries": {
+      "css": ["main"],
+      "js": ["main"]
+    },
+    "tasks": [
+      "html",
+      "css",
+      "js",
+      "fonts",
+      "images",
+      "sprite"
+    ],
+    "browsers": [
+      "> 0.5%"
+    ]
   },
   "dependencies": {
     "@babel/core": "^7.1.2",
@@ -39,7 +72,6 @@
     "gulp-uglify": "^3.0.1",
     "gulp-watch": "^5.0.0",
     "imagemin-pngquant": "^6.0.0",
-    "minimist": "^1.2.0",
     "ncp": "^2.0.0",
     "node-sass": "^4.9.2",
     "vinyl-buffer": "^1.0.1",

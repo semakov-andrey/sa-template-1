@@ -1,5 +1,5 @@
-# Front-End template generator. #
-###### Генератор шаблона для вёрстки сайта. ######
+# Front-End template. #
+###### Шаблон для вёрстки сайта на nodeJS 10 и gulp 4. ######
 
 ### Установка ###
 - `npm init --yes`  
@@ -8,28 +8,31 @@
 - `node node_modules/sa-template-1/main.js`
 
 ### Обновление ###
-- `npm run template`  
+- `npm run template`   
 
 ### Особенности установки/обновления ###
-- Копируются, если не существуют: readme.md, gulpfile.js, папка src
+- Копируются, если не существуют: readme.md, папка src
+- Все таски и gulpfile.js заменяются
 - .gitignore дополняется необходимыми записями
-- Все таски заменяются
 - package.json:
   - Дополняется зависимостями
   - Дополняется директориями
   - Обновляются подключенные таски 
   - Дополняется настройками тасков
 
+### Основные команды ###
+`npm run start` - development - разработка  
+`npm run build` - production - сборка  
+`npm run template` - обновление шаблона  
+`npm run module название` - создание модуля с .pug, .scss и .js файлами  
+
 ### Список тасков ###
 - `html` - компиляция pug в html
 - `css` - компиляция sass в css
 - `js` - сборка bundle js
-- `fonts` - преобразование ttf в woff, woff2
+- `fonts` - копирование шрифтов
 - `compress` - сжатие изображений jpg, png
 - `sprite` - генерация svg спрайта
-
-### Быстрое создание модуля ###
-- `npm run module название` - создает папку модуля с .pug, .scss и .js файлами  
 
 ### Используемые технологии ###
 - [nodejs](https://nodejs.org/)
@@ -39,6 +42,4 @@
 - [postcss](https://github.com/postcss/postcss) + [gulp-postcss](https://github.com/postcss/gulp-postcss) + [autoprefixer](https://autoprefixer.github.io/ru/)
 - [browserify](http://browserify.org/) + [babel](https://babeljs.io/) + [babelify](https://github.com/babel/babelify)
 - [gulp-svg-sprites](https://github.com/shakyshane/gulp-svg-sprites)
-- [ttf2woff](https://github.com/fontello/ttf2woff) + [gulp-ttf2woff](https://github.com/nfroidure/gulp-ttf2woff)
-- [ttf2woff2](https://github.com/nfroidure/ttf2woff2) + [gulp-ttf2woff2](https://github.com/nfroidure/gulp-ttf2woff2)
 - [imagemin](https://github.com/imagemin/imagemin) + [gulp-imagemin](https://github.com/sindresorhus/gulp-imagemin) + [imagemin-pngquant](https://github.com/imagemin/imagemin-pngquant)
