@@ -2,11 +2,8 @@
 ###### Генератор шаблона для вёрстки сайта. ######
 
 ### Установка ###
-- `%SystemRoot%/system32/WindowsPowerShell/v1.0` - windows, добавить в PATH  
-- `npm install -g windows-build-tools --add-python-to-path='true'` - windows, запуск от администратора   
-- `npm install -g node-gyp`  
-- `npm install -g gulp-cli`  
 - `npm init --yes`  
+- `npm install -g gulp-cli`
 - `npm install sa-template-1 --save-dev`  
 - `node node_modules/sa-template-1/main.js`
 
