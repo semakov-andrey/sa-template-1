@@ -58,7 +58,7 @@ if(!fs.existsSync(path.resolve(__dirname, project, 'src'))) {
 }
 
 /* update gitignore */
-let gitignore = ['node_modules', '.vscode', '*.log', 'build', 'tmp', 'Thumbs.db', '.idea', '.grunt', '.DS_Store', 'bash.exe.stackdump', '.editorconfig', '.yo-rc.json'];
+let gitignore = ['node_modules', 'build', 'tmp', '.vscode', '*.log', 'Thumbs.db', '.idea', '.grunt', '.DS_Store', 'bash.exe.stackdump', '.editorconfig', '.yo-rc.json'];
 let writeGitIgnore = (data, newData = []) => {
   fs.writeFile(path.resolve(__dirname, project, '.gitignore'), [...new Set([...data, ...newData])].join('\r\n'), 'utf8', error => error ? console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error) : console.log('Success: gitignore updated'));
 };
