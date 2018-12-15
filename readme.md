@@ -19,9 +19,9 @@
 ### Основные команды ###
 `npm run start` - development - разработка  
 `npm run build` - production - сборка   
-`npm run module название` - создание модуля с .pug, .scss и .js файлами   
-`npm update sa-template-1` - обновление шаблона  
-`npm update sa-template-1@version` - обновление шаблона
+`npm run module название` - создание модуля с .pug, .scss и .js файлами    
+`npm update sa-template-1` - обновление шаблона   
+`npm install sa-template-1@version` - обновление шаблона 
 
 ### Список тасков ###
 - `html` - компиляция pug в html
