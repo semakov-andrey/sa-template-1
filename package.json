@@ -21,6 +21,10 @@
       "development": "tmp",
       "production": "build",
       "tasks": {
+        "copy": [
+          "other",
+          ""
+        ],
         "html": [
           "pages",
           ""
@@ -56,6 +60,7 @@
       ]
     },
     "tasks": [
+      "copy",
       "html",
       "css",
       "js",
