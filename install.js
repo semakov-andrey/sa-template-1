@@ -28,12 +28,11 @@ let json = {
   scripts: {
     start: 'gulp serve',
     build: 'gulp build --production',
-    template: 'node node_modules/sa-template-1/install.js',
     module: 'node node_modules/sa-template-1/module.js'
   },
   devDependencies: {
     ...packageJSON.devDependencies,
-    ...templateJSON.dependencies,
+    ...templateJSON.dependencies
   },
   config: {
     entries: templateJSON.config.entries,
@@ -44,7 +43,7 @@ let json = {
       ...(packageJSON.config && packageJSON.config.directories ? packageJSON.config.directories : {}),
       tasks: {
         ...templateJSON.config.directories.tasks,
-        ...(packageJSON.config && packageJSON.config.directories && packageJSON.config.directories.tasks ? packageJSON.config.directories.tasks : {}),
+        ...(packageJSON.config && packageJSON.config.directories && packageJSON.config.directories.tasks ? packageJSON.config.directories.tasks : {})
       }
     },
     tasks: [...new Set([...(packageJSON.config && packageJSON.config.tasks ? packageJSON.config.tasks : []), ...templateJSON.config.tasks])]
