@@ -1,0 +1,22 @@
+.preloader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: $white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s, visibility .3s;
+
+  &_active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.preloader__logotype {
+  width: 375px * .5;
+  height: 375px * .5;
+}

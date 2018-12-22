@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
-  height: 100px;
-  border-bottom: 2px dashed blue;
-  font: bold 20px/30px 'Open Sans', Arial, Helvetica, sans-serif;
+  height: 80px;
+  box-shadow: 0 2px 10px 0 rgba($black, .25);
+  font-weight: 500;
 }

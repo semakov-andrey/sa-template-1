@@ -1,2 +1,12 @@
+@import 'variables';
 @import 'fonts';
+@import 'typography';
 @import '../modules/layout/layout';
+
+@import '../modules/icon/icon';
+@import '../modules/preloader/preloader';
+@import '../modules/site/site';
+@import '../modules/header/header';
+@import '../modules/footer/footer';
+
+@import '../modules/animations/preloader';
