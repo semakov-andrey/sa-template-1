@@ -1,10 +1,6 @@
 .page {
   flex: 1 0 auto;
   padding-bottom: 50px;
-
-  @include media-breakpoint-down(sm) {
-    padding-bottom: 25px;
-  }
 }
 
 .container {

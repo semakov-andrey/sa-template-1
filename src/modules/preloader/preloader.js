@@ -4,11 +4,14 @@ import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 
 export default class Preloader {
 	constructor() {
-		this.time = 3000;
+		this.externalTime = 3000;
+		this.internalTime = 500;
+		this.origin = location.origin;
 		this.preloader = document.getElementById('preloader');
 		if(this.preloader) {
 			this.show();
-			setTimeout(() => this.hide(), this.time);
+			let time = document.referrer !== '' && document.referrer.indexOf(this.origin) === 0 ? this.internalTime : this.externalTime;
+			setTimeout(() => this.hide(), time);
 		}
 	}
 

@@ -1,16 +1,14 @@
 .images__row {
   margin-top: 50px;
-  margin-bottom: 50px;
 
   @include media-breakpoint-down(xs) {
     margin-top: 25px;
-    margin-bottom: 25px;
   }
 }
 
 .images__row + .images__row {
   @include media-breakpoint-down(xs) {
-    margin-top: 50px;
+    margin-top: 35px;
   }
 }
 
