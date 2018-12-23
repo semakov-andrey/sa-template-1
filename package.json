@@ -79,6 +79,7 @@
     "autoprefixer": "^9.0.2",
     "babelify": "^10.0.0",
     "body-scroll-lock": "^2.6.1",
+    "bootstrap": "^4.2.1",
     "browser-sync": "^2.23.6",
     "browserify": "^16.2.2",
     "del": "^3.0.0",
@@ -102,6 +103,7 @@
     "imagemin-pngquant": "^6.0.0",
     "ncp": "^2.0.0",
     "node-sass": "^4.11.0",
+    "normalize.css": "^8.0.1",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   }

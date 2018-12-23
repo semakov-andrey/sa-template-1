@@ -21,6 +21,7 @@ ncp.ncp(path.resolve(__dirname, 'gulpfile.js'), path.resolve(__dirname, project,
 /* update tasks */
 ncp.ncp(path.resolve(__dirname, 'tasks'), path.resolve(__dirname, project, 'tasks'), error => error ? console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error) : console.log('Success: tasks updated'));
 
+// body-scroll-lock, normalize, bootstrap
 /* update configuration */
 delete templateJSON.dependencies['ncp'];
 let json = {
