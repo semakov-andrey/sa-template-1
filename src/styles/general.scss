@@ -1,5 +1,6 @@
 .page {
   flex: 1 0 auto;
+  padding-top: 50px;
   padding-bottom: 50px;
 }
 
@@ -31,10 +32,26 @@ img {
   display: block;
 }
 
-ul {
+ul,
+ol {
   padding-left: 20px;
 }
 
-li {
+ul li {
   list-style-type: square;
+}
+
+.table {
+  width: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table__element {
+  width: 100%;
+  min-width: 800px;
+}
+
+th {
+  text-align: left;
 }

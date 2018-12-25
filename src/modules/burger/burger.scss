@@ -4,7 +4,7 @@
   height: 100%;
   position: fixed;
   background-color: $white;
-  z-index: 900;
+  z-index: 800;
   transform: translateX(-100%);
   transition: transform .3s;
   font-weight: 500;
@@ -31,7 +31,7 @@
   }
 }
 
-.burger__icon {
+.burger__close-icon {
   width: 100%;
   height: 100%;
 }
