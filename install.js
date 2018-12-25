@@ -21,7 +21,6 @@ ncp.ncp(path.resolve(__dirname, 'gulpfile.js'), path.resolve(__dirname, project,
 /* update tasks */
 ncp.ncp(path.resolve(__dirname, 'tasks'), path.resolve(__dirname, project, 'tasks'), error => error ? console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error) : console.log('Success: tasks updated'));
 
-// body-scroll-lock, normalize, bootstrap, @babel/polyfill
 /* update configuration */
 delete templateJSON.dependencies['ncp'];
 let json = {
@@ -51,11 +50,6 @@ let json = {
   }
 };
 fs.writeFile(path.resolve(__dirname, project, 'package.json'), JSON.stringify(json, null, 2), 'utf8', error => error ? console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error) : console.log('Success: configuration updated'));
-
-/* update source */
-if(!fs.existsSync(path.resolve(__dirname, project, 'src'))) {
-  ncp.ncp(path.resolve(__dirname, 'src'), path.resolve(__dirname, project, 'src'), error => error ? console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error) : console.log('Success: source updated'));
-}
 
 /* update gitignore */
 let gitignore = ['node_modules', 'build', 'tmp', '.vscode', '*.log', 'Thumbs.db', '.idea', '.grunt', '.DS_Store', 'bash.exe.stackdump', '.editorconfig', '.yo-rc.json'];
