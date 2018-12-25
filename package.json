@@ -75,6 +75,7 @@
   "dependencies": {
     "@babel/core": "^7.1.2",
     "@babel/plugin-transform-object-assign": "^7.0.0",
+    "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.2.3",
     "autoprefixer": "^9.4.3",
     "babelify": "^10.0.0",
