@@ -20,4 +20,14 @@
 .preloader__logotype {
   width: 375px * .5;
   height: 375px * .5;
+
+  @include media-breakpoint-down(md) {
+    width: 375px * .375;
+    height: 375px * .375;
+  }
+
+  @include media-breakpoint-down(xs) {
+    width: 375px * .25;
+    height: 375px * .25;
+  }
 }

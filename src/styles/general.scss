@@ -17,16 +17,24 @@
 }
 
 a {
-  color: blue;
+  color: $blue;
   text-decoration: none;
   transition: color .3s;
 
   &:hover {
-    color: red;
+    color: $red;
   }
 }
 
 img {  
   max-width: 100%;
   display: block;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+li {
+  list-style-type: square;
 }
