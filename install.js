@@ -21,7 +21,7 @@ ncp.ncp(path.resolve(__dirname, 'gulpfile.js'), path.resolve(__dirname, project,
 /* update tasks */
 ncp.ncp(path.resolve(__dirname, 'tasks'), path.resolve(__dirname, project, 'tasks'), error => error ? console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error) : console.log('Success: tasks updated'));
 
-/* update configuration */
+/* update package.json */
 delete templateJSON.dependencies['ncp'];
 let scripts = { 
   start: 'gulp serve',
@@ -53,7 +53,7 @@ let json = {
     tasks: [...new Set([...(packageJSON.config && packageJSON.config.tasks ? packageJSON.config.tasks : []), ...templateJSON.config.tasks])]
   }
 };
-fs.writeFile(path.resolve(__dirname, project, 'package.json'), JSON.stringify(json, null, 2), 'utf8', error => error ? console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error) : console.log('Success: configuration updated'));
+fs.writeFile(path.resolve(__dirname, project, 'package.json'), JSON.stringify(json, null, 2), 'utf8', error => error ? console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error) : console.log('Success: package.json updated'));
 
 /* update gitignore */
 let gitignore = ['node_modules', 'build', 'tmp', '.vscode', '*.log', 'Thumbs.db', '.idea', '.grunt', '.DS_Store', 'bash.exe.stackdump', '.editorconfig', '.yo-rc.json'];

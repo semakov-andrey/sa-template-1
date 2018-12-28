@@ -1,5 +1,6 @@
 node_modules
 build
+src
 tmp
 .vscode
 *.log
@@ -10,4 +11,3 @@ Thumbs.db
 bash.exe.stackdump
 .editorconfig
 .yo-rc.json
-src
