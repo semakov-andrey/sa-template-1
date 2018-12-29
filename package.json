@@ -2,12 +2,23 @@
   "name": "sa-template-1",
   "version": "3.1.2",
   "description": "sa-template-1",
+  "keywords": [
+    "template",
+    "gulp",
+    "pug",
+    "sass",
+    "postcss",
+    "svg-sprite",
+    "imagemin",
+    "optimize",
+    "compress"
+  ],
   "main": "install.js",
   "repository": {
     "type": "git",
     "url": "git@gitlab.com:semakov_andrey/sa-template-1.git"
   },
-  "author": "Semakov Andrey",
+  "author": "Semakov Andrey <semakov.andrey.web@yandex.ru>",
   "license": "ISC",
   "scripts": {
     "install": "node install.js",
