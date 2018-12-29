@@ -62,6 +62,12 @@
         ]
       }
     },
+    "devServer": {
+      "secure": true,
+      "host": "localhost",
+      "open": false,
+      "port": "3000"
+    },
     "entries": {
       "css": [
         "main"
