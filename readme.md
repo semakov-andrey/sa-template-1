@@ -34,9 +34,9 @@
 ### Используемые технологии ###
 - [nodejs](https://nodejs.org/)
 - [gulp](https://gulpjs.com/)
-- [pug](https://pugjs.org/) + [gulp-pug](https://github.com/gulp-community/gulp-pug)
+- [pug](https://pugjs.org/) + [gulp-pug](https://github.com/gulp-community/gulp-pug) + [html-minifier](https://github.com/kangax/html-minifier)
 - [sass](https://sass-lang.com/) + [node-sass](https://github.com/sass/node-sass) + [gulp-sass](https://github.com/dlmanning/gulp-sass)
-- [postcss](https://github.com/postcss/postcss) + [gulp-postcss](https://github.com/postcss/gulp-postcss) + [autoprefixer](https://autoprefixer.github.io/ru/)
-- [browserify](http://browserify.org/) + [babel](https://babeljs.io/) + [babelify](https://github.com/babel/babelify)
-- [gulp-svg-sprites](https://github.com/shakyshane/gulp-svg-sprites)
+- [postcss](https://github.com/postcss/postcss) + [gulp-postcss](https://github.com/postcss/gulp-postcss) + [autoprefixer](https://autoprefixer.github.io/ru/) + [cssnano](https://cssnano.co/)
+- [browserify](http://browserify.org/) + [babel](https://babeljs.io/) + [babelify](https://github.com/babel/babelify) + [uglifyJS](https://github.com/mishoo/UglifyJS)
+- [gulp-svg-sprites](https://github.com/shakyshane/gulp-svg-sprites) + [svgo](https://github.com/svg/svgo) + [gulp-svgo](https://github.com/corneliusio/gulp-svgo)
 - [imagemin](https://github.com/imagemin/imagemin) + [gulp-imagemin](https://github.com/sindresorhus/gulp-imagemin) + [imagemin-pngquant](https://github.com/imagemin/imagemin-pngquant)

@@ -15,10 +15,18 @@ module.exports = params => {
   const input = `${source}/${dirs.sprite[0]}/*.svg`;
   const output = `${target}/${dirs.sprite[1]}`;
   gulp.task('sprite', () => gulp.src(input)
-    .pipe(svgo({ plugins: [{ removeViewBox: false }] }))
+    .pipe(svgo({
+      plugins: [
+        { removeViewBox: false },
+        { convertColors: { shorthex: true }},
+        { removeEmptyAttrs: false }
+      ] 
+    }))
     .pipe(svgSprite({
       mode: 'symbols',
-      svg: { symbols: 'sprite.svg' },
+      svg: {
+        symbols: 'sprite.svg'
+      },
       preview: false,
       asyncTransforms: true,
       transformData: (data, config, done) => {

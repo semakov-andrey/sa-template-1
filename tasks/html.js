@@ -2,9 +2,10 @@
 
 const pug                       = require('gulp-pug');
 const emitty                    = require('emitty').setup('src', 'pug', { makeVinylFile: true });
+const htmlmin                   = require('gulp-htmlmin');
 
 module.exports = params => {
-  const { gulp, source, target, dirs, plumber, notify, gulpif, browserSync } = params;
+  const { gulp, production, source, target, dirs, plumber, notify, gulpif, browserSync } = params;
   const input = `${source}/${dirs.html[0]}/*.pug`;
   const output = `${target}/${dirs.html[1]}`;
   gulp.task('html', () => new Promise((resolve, reject) => {
@@ -22,6 +23,16 @@ module.exports = params => {
       .pipe(pug({
         pretty: true
       }))
+      .pipe(gulpif(production, htmlmin({
+        removeComments: true,
+        collapseWhitespace: true,
+        conservativeCollapse: false,
+        quoteCharacter: '"',
+        minifyCSS: true,
+        minifyJS: true,
+        removeAttributeQuotes: true,
+        removeOptionalTags: true
+      })))
       .pipe(gulp.dest(output))
       .on('end', () => {
         browserSync.reload();

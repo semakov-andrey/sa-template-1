@@ -18,12 +18,24 @@ module.exports = params => {
       })
     }))
     .pipe(gulpif(!production, sourcemaps.init()))
-    .pipe(sass({ outputStyle: 'expanded' }))
-    .pipe(postcss([autoprefixer({ browsers: browserList })]))
+    .pipe(sass({
+      outputStyle: 'expanded'
+    }))
+    .pipe(postcss([autoprefixer({
+      browsers: browserList
+    })]))
     .pipe(gulpif(production, cssnano({
+      discardComments: {
+        removeAll: true,
+      },
+      minifyFontValues: {
+        removeQuotes: false
+      },
       zindex: false
     })))
     .pipe(gulpif(!production, sourcemaps.write('.')))
     .pipe(gulp.dest(output))
-    .pipe(browserSync.stream({ match: '**/*.css' })));
+    .pipe(browserSync.stream({
+      match: '**/*.css'
+    })));
 };

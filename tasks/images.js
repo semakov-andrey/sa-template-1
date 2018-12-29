@@ -6,27 +6,33 @@ const rename                    = require('gulp-rename');
 
 module.exports = params => {
   const { gulp, production, source, target, dirs, gulpif, browserSync } = params;
-  const input1 = [
-    `${source}/${dirs.images[0]}/**/*.svg`,
+  const input = [
+    `${source}/${dirs.images[0]}/**/*.{jpg,gif,png,webp,svg,mp4}`,
     `!${source}/${dirs.sprite[0]}/*.svg`
   ];
-  const input2 = `${source}/${dirs.images[0]}/**/*.{jpg,gif,png,webp,mp4}`;
   const output = `${target}/${dirs.images[1]}`;
-  gulp.task('images', () => new Promise((resolve, reject) => {
-    const imagesCopy = () => gulp.src(input1).pipe(rename(path => path.dirname = '/'))
-      .pipe(gulp.dest(output));
-    const imagesMin = () => gulp.src(input2)
-      .pipe(gulpif(production, imagemin({
+  gulp.task('images', () => gulp.src(input)
+    .pipe(rename(path => path.dirname = '/'))
+    .pipe(gulpif(production, imagemin([
+      imagemin.jpegtran({
         progressive: true,
-        use: [pngquant()]
-      })))
-      .pipe(rename(path => path.dirname = '/'))
-      .pipe(gulp.dest(output));
-    const imagesDone = done => {
-      browserSync.reload();
-      resolve();
-      done();
-    };
-    gulp.series(gulp.parallel(imagesCopy, imagesMin), imagesDone)();
-  }));
+        quality: 80
+      }),
+      imagemin.gifsicle({
+        interlaced: false
+      }),
+      imagemin.optipng({
+        optimizationLevel: 7
+      }),
+      imagemin.svgo({
+        plugins: [
+          { removeViewBox: false },
+          { convertColors: { shorthex: true }},
+          { removeEmptyAttrs: false }
+        ]
+      })
+    ])))
+    .pipe(gulp.dest(output))
+    .on('end', () => browserSync.reload())
+  );
 };
