@@ -1,10 +1,15 @@
 'use strict';
 
+const configServer              = require('../package.json').config.devServer;
+
 module.exports = params => {
-  let { gulp, target, browserSync } = params;
+  const { gulp, target, browserSync } = params;
   gulp.task('browser', () => browserSync({
-    open: false,
+    host: configServer.host,
+    https: configServer.secure,
+    open: configServer.open,
+    notify: false,
+    port: configServer.port,
     server: target,
-    notify: false
   }));
 };

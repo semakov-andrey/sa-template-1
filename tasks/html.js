@@ -1,12 +1,12 @@
 'use strict';
 
-const pug             = require('gulp-pug');
-const emitty          = require('emitty').setup('src', 'pug', { makeVinylFile: true });
+const pug                       = require('gulp-pug');
+const emitty                    = require('emitty').setup('src', 'pug', { makeVinylFile: true });
 
 module.exports = params => {
-  let { gulp, source, target, dirs, plumber, notify, gulpif, browserSync } = params;
-  let input = `${source}/${dirs.html[0]}/*.pug`;
-  let output = `${target}/${dirs.html[1]}`;
+  const { gulp, source, target, dirs, plumber, notify, gulpif, browserSync } = params;
+  const input = `${source}/${dirs.html[0]}/*.pug`;
+  const output = `${target}/${dirs.html[1]}`;
   gulp.task('html', () => new Promise((resolve, reject) => {
     let change = global.changedFile ? true : false;
     emitty.scan(global.changedFile).then(() => {

@@ -1,14 +1,14 @@
 'use strict';
 
-const project         = '../../';
-const fs              = require('fs');
-const path            = require('path');
-const ncp             = require('ncp');
+const project                   = '../../';
+const fs                        = require('fs');
+const path                      = require('path');
+const ncp                       = require('ncp');
 
 if(path.basename(path.resolve(__dirname, '../')) !== 'node_modules') return;
 
-let templateJSON      = require('./package.json');
-let packageJSON       = require(`${project}package.json`);
+const templateJSON              = require('./package.json');
+const packageJSON               = require(`${project}package.json`);
 
 /* update readme */
 if(!fs.existsSync(path.resolve(__dirname, project, 'readme.md'))) {
@@ -23,12 +23,12 @@ ncp.ncp(path.resolve(__dirname, 'tasks'), path.resolve(__dirname, project, 'task
 
 /* update package.json */
 delete templateJSON.dependencies['ncp'];
-let scripts = { 
+const scripts = { 
   start: 'gulp serve',
   build: 'gulp build --production',
   module: 'node node_modules/sa-template-1/module.js'
 };
-let json = {
+const json = {
   ...packageJSON,
   scripts: {
     ...packageJSON.scripts,
@@ -39,6 +39,7 @@ let json = {
     ...templateJSON.dependencies
   },
   config: {
+    devServer: templateJSON.config.devServer,
     entries: templateJSON.config.entries,
     browsers: templateJSON.config.browsers,
     ...packageJSON.config,
@@ -56,8 +57,8 @@ let json = {
 fs.writeFile(path.resolve(__dirname, project, 'package.json'), JSON.stringify(json, null, 2), 'utf8', error => error ? console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error) : console.log('Success: package.json updated'));
 
 /* update gitignore */
-let gitignore = ['node_modules', 'build', 'tmp', '.vscode', '*.log', 'Thumbs.db', '.idea', '.grunt', '.DS_Store', 'bash.exe.stackdump', '.editorconfig', '.yo-rc.json'];
-let writeGitIgnore = (data, newData = []) => {
+const gitignore = ['node_modules', 'build', 'tmp', '.vscode', '*.log', 'Thumbs.db', '.idea', '.grunt', '.DS_Store', 'bash.exe.stackdump', '.editorconfig', '.yo-rc.json'];
+const writeGitIgnore = (data, newData = []) => {
   fs.writeFile(path.resolve(__dirname, project, '.gitignore'), [...new Set([...data, ...newData])].join('\r\n'), 'utf8', error => error ? console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error) : console.log('Success: gitignore updated'));
 };
 if(fs.existsSync(path.resolve(__dirname, project, '.gitignore'))) {
