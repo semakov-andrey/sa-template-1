@@ -39,4 +39,4 @@
 - [postcss](https://github.com/postcss/postcss) + [gulp-postcss](https://github.com/postcss/gulp-postcss) + [autoprefixer](https://autoprefixer.github.io/ru/) + [cssnano](https://cssnano.co/)
 - [browserify](http://browserify.org/) + [babel](https://babeljs.io/) + [babelify](https://github.com/babel/babelify) + [uglifyJS](https://github.com/mishoo/UglifyJS)
 - [gulp-svg-sprites](https://github.com/shakyshane/gulp-svg-sprites) + [svgo](https://github.com/svg/svgo) + [gulp-svgo](https://github.com/corneliusio/gulp-svgo)
-- [imagemin](https://github.com/imagemin/imagemin) + [gulp-imagemin](https://github.com/sindresorhus/gulp-imagemin) + [imagemin-pngquant](https://github.com/imagemin/imagemin-pngquant)
+- [imagemin](https://github.com/imagemin/imagemin) + [gulp-imagemin](https://github.com/sindresorhus/gulp-imagemin) + [jpegtran](https://ruhighload.com/jpegtran) + [gifsicle](https://www.lcdf.org/gifsicle/) + [optipng](http://optipng.sourceforge.net/)
