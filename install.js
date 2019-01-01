@@ -23,7 +23,6 @@ ncp.ncp(path.resolve(__dirname, 'tasks'), path.resolve(__dirname, project, 'task
 
 /* update package.json */
 delete templateJSON.dependencies['ncp'];
-delete templateJSON.dependencies['sa-source'];
 const scripts = { 
   start: 'gulp serve',
   build: 'gulp build --production',
