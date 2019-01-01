@@ -5,13 +5,14 @@ const fs                        = require('fs');
 const path                      = require('path');
 const ncp                       = require('ncp');
 
-if(path.basename(path.resolve(__dirname, '../')) !== 'node_modules') return;
+if (path.basename(path.resolve(__dirname, '../')) !== 'node_modules') return;
 
 const templateJSON              = require('./package.json');
 const packageJSON               = require(`${project}package.json`);
+const DEV                       = packageJSON && packageJSON.name === 'sa-source';
 
 /* update readme */
-if(!fs.existsSync(path.resolve(__dirname, project, 'readme.md'))) {
+if (!fs.existsSync(path.resolve(__dirname, project, 'readme.md'))) {
   ncp.ncp(path.resolve(__dirname, 'readme.md'), path.resolve(__dirname, project, 'readme.md'), error => error ? console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error) : console.log('Success: readme updated'));
 }
 
@@ -36,7 +37,7 @@ const json = {
   },
   devDependencies: {
     ...packageJSON.devDependencies,
-    ...templateJSON.dependencies
+    ...(!DEV ? templateJSON.dependencies : {})
   },
   config: {
     devServer: templateJSON.config.devServer,
@@ -61,7 +62,7 @@ const gitignore = ['node_modules', 'build', 'tmp', '.vscode', '*.log', 'Thumbs.d
 const writeGitIgnore = (data, newData = []) => {
   fs.writeFile(path.resolve(__dirname, project, '.gitignore'), [...new Set([...data, ...newData])].join('\r\n'), 'utf8', error => error ? console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error) : console.log('Success: gitignore updated'));
 };
-if(fs.existsSync(path.resolve(__dirname, project, '.gitignore'))) {
+if (fs.existsSync(path.resolve(__dirname, project, '.gitignore'))) {
   fs.readFile(path.resolve(__dirname, project, '.gitignore'), 'utf8', (error, data) => {
     if(error) return console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error);
     writeGitIgnore(data.split('\r\n'), gitignore);
