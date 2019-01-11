@@ -24,7 +24,8 @@
     "install": "node install.js",
     "module": "node module.js",
     "start": "gulp serve",
-    "build": "gulp build --production"
+    "build": "gulp build --production",
+    "lint-css": "stylelint src/**/*.scss -f verbose --fix"
   },
   "config": {
     "directories": {
@@ -93,7 +94,7 @@
     "@babel/core": "^7.2.2",
     "@babel/plugin-transform-object-assign": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
-    "autoprefixer": "^9.4.3",
+    "autoprefixer": "^9.4.4",
     "babelify": "^10.0.0",
     "browser-sync": "^2.26.3",
     "browserify": "^16.2.3",
@@ -119,6 +120,7 @@
     "imagemin-pngquant": "^6.0.1",
     "ncp": "^2.0.0",
     "node-sass": "^4.11.0",
+    "stylelint": "^9.9.0",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   },

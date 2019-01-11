@@ -19,6 +19,9 @@ if (!fs.existsSync(path.resolve(__dirname, project, 'readme.md'))) {
 /* update task-runner */
 ncp.ncp(path.resolve(__dirname, 'gulpfile.js'), path.resolve(__dirname, project, 'gulpfile.js'), error => error ? console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error) : console.log('Success: task-runner updated'));
 
+/* update stylelint */
+ncp.ncp(path.resolve(__dirname, '.stylelintrc'), path.resolve(__dirname, project, '.stylelintrc'), error => error ? console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error) : console.log('Success: stylelint updated'));
+
 /* update tasks */
 ncp.ncp(path.resolve(__dirname, 'tasks'), path.resolve(__dirname, project, 'tasks'), error => error ? console.error('\x1b[31m%s\x1b[0m', 'Error: ' + error) : console.log('Success: tasks updated'));
 
@@ -27,7 +30,8 @@ delete templateJSON.dependencies['ncp'];
 const scripts = { 
   start: 'gulp serve',
   build: 'gulp build --production',
-  module: 'node node_modules/sa-template-1/module.js'
+  module: 'node node_modules/sa-template-1/module.js',
+  'lint-css': 'stylelint src/**/*.scss -f verbose --fix'
 };
 const json = {
   ...packageJSON,

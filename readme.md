@@ -20,6 +20,7 @@
 `npm run start` - development - разработка  
 `npm run build` - production - сборка   
 `npm run module название` - создание модуля с .pug, .scss и .js файлами    
+`npm run lint-css` - линтинг css  
 `npm update sa-template-1` - обновление шаблона   
 `npm install sa-template-1@version` - обновление шаблона 
 
