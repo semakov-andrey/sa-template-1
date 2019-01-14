@@ -121,6 +121,11 @@
     "ncp": "^2.0.0",
     "node-sass": "^4.11.0",
     "stylelint": "^9.9.0",
+    "stylelint-declaration-block-no-ignored-properties": "^1.1.0",
+    "stylelint-scss": "^3.5.0",
+    "stylelint-selector-no-empty": "^1.0.7",
+    "stylelint-suitcss": "^3.0.0",
+    "stylelint-z-index-value-constraint": "^1.0.0",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   },
