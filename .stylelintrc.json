@@ -1,6 +1,6 @@
 {
   "defaultSeverity": "warning",
-  plugins: [
+  "plugins": [
     "stylelint-declaration-block-no-ignored-properties",
     "stylelint-scss",
     "stylelint-selector-no-empty",

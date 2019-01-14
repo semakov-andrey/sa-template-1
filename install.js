@@ -20,8 +20,13 @@ if (!fs.existsSync(path.resolve(__dirname, project, 'readme.md'))) {
 ncp.ncp(path.resolve(__dirname, 'gulpfile.js'), path.resolve(__dirname, project, 'gulpfile.js'), error => error ? console.error('\x1b[31m%s\x1b[0m', `Error:  ${error}`) : console.log('Success: task-runner updated'));
 
 /* update stylelint */
-if(!fs.existsSync(path.resolve(__dirname, project, '.stylelintrc'))) {
-  ncp.ncp(path.resolve(__dirname, '.stylelintrc'), path.resolve(__dirname, project, '.stylelintrc'), error => error ? console.error('\x1b[31m%s\x1b[0m', `Error:  ${error}`) : console.log('Success: stylelint updated'));
+if(!fs.existsSync(path.resolve(__dirname, project, '.stylelintrc.json'))) {
+  ncp.ncp(path.resolve(__dirname, '.stylelintrc.json'), path.resolve(__dirname, project, '.stylelintrc.json'), error => error ? console.error('\x1b[31m%s\x1b[0m', `Error:  ${error}`) : console.log('Success: stylelint updated'));
+}
+
+/* update eslint */
+if(!fs.existsSync(path.resolve(__dirname, project, '.eslintrc.json'))) {
+  ncp.ncp(path.resolve(__dirname, '.eslintrc.json'), path.resolve(__dirname, project, '.eslintrc.json'), error => error ? console.error('\x1b[31m%s\x1b[0m', `Error:  ${error}`) : console.log('Success: eslint updated'));
 }
 
 /* update tasks */
