@@ -71,7 +71,11 @@
     "no-useless-escape": 1,
     
     "no-delete-var": 1,
+    "no-label-var": 1,
+    "no-shadow-restricted-names": 1,
     "no-undef": 1,
+    "no-undef-init": 1,
+    "no-undefined": 1,
     "no-unused-vars": [
       1,
       {
@@ -81,7 +85,14 @@
         "caughtErrors": "all"
       }
     ],
-
+    "no-use-before-define": [
+      1,
+      {
+        "functions": true,
+        "classes": true,
+        "variables": true
+      }
+    ],
     "array-bracket-newline": [1, "consistent"],
     "array-bracket-spacing": [1, "never"],
     "array-element-newline": [1, "consistent"],
