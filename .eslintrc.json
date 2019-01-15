@@ -3,7 +3,7 @@
     "browser": true
   },
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 2018,
     "sourceType": "module"
   },  
   "rules": {
@@ -56,17 +56,61 @@
     
     "no-delete-var": 1,
     "no-undef": 1,
-    "no-unused-vars": [1, { "vars": "all", "args": "all", "ignoreRestSiblings": false, "caughtErrors": "all" }],
+    "no-unused-vars": [
+      1,
+      {
+        "vars": "all",
+        "args": "all",
+        "ignoreRestSiblings": false,
+        "caughtErrors": "all"
+      }
+    ],
 
     "no-mixed-spaces-and-tabs": 1,
 
+    "arrow-body-style": [1, "as-needed"],
+    "arrow-parens": [1, "as-needed", { "requireForBlockBody": false }],
+    "arrow-spacing": [1, { "before": true, "after": true }],
     "constructor-super": 1,
+    "generator-star-spacing": [1, {"before": false, "after": true}],
     "no-class-assign": 1,
     "no-const-assign": 1,
     "no-dupe-class-members": 1,
     "no-new-symbol": 1,
+    "no-duplicate-imports": [1, { "includeExports": false }],
     "no-this-before-super": 1,
+    "no-useless-computed-key": 1,
+    "no-useless-constructor": 1,
+    "no-useless-rename": [
+      1,
+      {
+        "ignoreDestructuring": false,
+        "ignoreImport": false,
+        "ignoreExport": false
+      }
+    ],
+    "no-var": 1,
+    "object-shorthand": 1,
+    "prefer-arrow-callback": [1, { "allowNamedFunctions": false, "allowUnboundThis": true }],
+    "prefer-const": [1, { "destructuring": "all", "ignoreReadBeforeAssign": true }],
+    "prefer-numeric-literals": 1,
+    "prefer-rest-params": 1,
+    "prefer-spread": 1,
+    "prefer-template": 1,
     "require-yield": 1,
+    "rest-spread-spacing": [1, "never"],
+    "sort-imports": [
+      1,
+      {
+        "ignoreCase": false,
+        "ignoreDeclarationSort": false,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"]
+      }
+    ],
+    "symbol-description": 1,
+    "template-curly-spacing": [1, "never"],
+    "yield-star-spacing": [1, { "before": false, "after": true }],
 
     "semi": [1, "always", { "omitLastInOneLineBlock": false }],
     "indent": [1, 2],
