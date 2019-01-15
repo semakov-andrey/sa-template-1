@@ -9,8 +9,8 @@
   "rules": {
     "for-direction": 1,
     "getter-return": [1, { "allowImplicit": true }],
-    "no-async-promise-executor": [],
-    "no-await-in-loop": [],
+    "no-async-promise-executor": 1,
+    "no-await-in-loop": 1,
     "no-compare-neg-zero": 1,
     "no-cond-assign": [1, "except-parens"],
     "no-console": 1,
@@ -57,7 +57,7 @@
     "no-unsafe-finally": 1,
     "no-unsafe-negation": 1,
     "use-isnan": 1,
-    "require-atomic-updates": [],
+    "require-atomic-updates": 1,
     "valid-typeof": [1, { "requireStringLiterals": true }],
 
     "no-case-declarations": 1,
