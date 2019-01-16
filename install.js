@@ -20,12 +20,12 @@ if (!fs.existsSync(path.resolve(__dirname, project, 'readme.md'))) {
 ncp.ncp(path.resolve(__dirname, 'gulpfile.js'), path.resolve(__dirname, project, 'gulpfile.js'), error => error ? console.error('\x1b[31m%s\x1b[0m', `Error:  ${error}`) : console.log('Success: task-runner updated'));
 
 /* update stylelint */
-if(!fs.existsSync(path.resolve(__dirname, project, '.stylelintrc'))) {
+if (!fs.existsSync(path.resolve(__dirname, project, '.stylelintrc'))) {
   ncp.ncp(path.resolve(__dirname, '.stylelintrc'), path.resolve(__dirname, project, '.stylelintrc'), error => error ? console.error('\x1b[31m%s\x1b[0m', `Error:  ${error}`) : console.log('Success: stylelint updated'));
 }
 
 /* update eslint */
-if(!fs.existsSync(path.resolve(__dirname, project, '.eslintrc'))) {
+if (!fs.existsSync(path.resolve(__dirname, project, '.eslintrc'))) {
   ncp.ncp(path.resolve(__dirname, '.eslintrc'), path.resolve(__dirname, project, '.eslintrc'), error => error ? console.error('\x1b[31m%s\x1b[0m', `Error:  ${error}`) : console.log('Success: eslint updated'));
 }
 
@@ -76,7 +76,7 @@ const writeGitIgnore = (data, newData = []) => {
 };
 if (fs.existsSync(path.resolve(__dirname, project, '.gitignore'))) {
   fs.readFile(path.resolve(__dirname, project, '.gitignore'), 'utf8', (error, data) => {
-    if(error) return console.error('\x1b[31m%s\x1b[0m', `Error:  ${error}`);
+    if (error) return console.error('\x1b[31m%s\x1b[0m', `Error:  ${error}`);
     writeGitIgnore(data.split('\r\n'), gitignore);
   });
 } else writeGitIgnore(gitignore);

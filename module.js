@@ -17,7 +17,7 @@ if (newModule !== '') {
         if (error) return console.error('\x1b[31m%s\x1b[0m', `Error:  ${error}`);
         console.log('Success: .pug file created');
       });
-      fs.writeFile(path.resolve(__dirname, project, 'src', 'modules', newModule, `${newModule}.scss`), `.${newModule} {\r\n\r\n\}`, 'utf8', error => {
+      fs.writeFile(path.resolve(__dirname, project, 'src', 'modules', newModule, `${newModule}.scss`), `.${newModule} {\r\n\r\n}`, 'utf8', error => {
         if (error) return console.error('\x1b[31m%s\x1b[0m', `Error:  ${error}`);
         console.log('Success: .scss file created');
       });
