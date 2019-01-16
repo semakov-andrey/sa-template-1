@@ -11,14 +11,14 @@ const sourcemaps                = require('gulp-sourcemaps');
 const browserSync	              = require('browser-sync');
 
 const args                      = minimist(process.argv.slice(2));
-const production                = typeof(args.production) !== 'undefined';
+const production                = typeof args.production !== 'undefined';
 const source                    = packageJSON.config.directories.source;
 const target                    = packageJSON.config.directories[production ? 'production' : 'development'];
 const dirs                      = packageJSON.config.directories.tasks;
 const entries                   = packageJSON.config.entries;
 const browserList               = packageJSON.config.browsers;
 const work                      = packageJSON.config.tasks;
-  
+
 glob.sync('./tasks/**/*.js').map(file => require(file)({
   packageJSON,
   gulp,
