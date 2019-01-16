@@ -7,7 +7,7 @@
 - `npm install sa-template-1 --save-dev`
 
 ### Особенности установки/обновления ###
-- readme.md, .stylelintrc.json, .eslintrc.json копируются, если не существуют 
+- readme.md, .stylelintrc, .eslintrc копируются, если не существуют 
 - Все таски и gulpfile.js заменяются
 - .gitignore дополняется необходимыми записями
 - package.json:
