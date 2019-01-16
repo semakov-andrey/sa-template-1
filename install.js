@@ -5,7 +5,7 @@ const fs                        = require('fs');
 const path                      = require('path');
 const ncp                       = require('ncp');
 
-if (path.basename(path.resolve(__dirname, '../')) !== 'node_modules') return;
+if (path.basename(path.resolve(__dirname, '../')) !== 'node_modules') process.exit();
 
 const templateJSON              = require('./package.json');
 const packageJSON               = require(`${project}package.json`);
@@ -33,8 +33,8 @@ if(!fs.existsSync(path.resolve(__dirname, project, '.eslintrc'))) {
 ncp.ncp(path.resolve(__dirname, 'tasks'), path.resolve(__dirname, project, 'tasks'), error => error ? console.error('\x1b[31m%s\x1b[0m', `Error:  ${error}`) : console.log('Success: tasks updated'));
 
 /* update package.json */
-delete templateJSON.dependencies['ncp'];
-const scripts = { 
+delete templateJSON.dependencies.ncp;
+const scripts = {
   start: 'gulp serve',
   build: 'gulp build --production',
   module: 'node node_modules/sa-template-1/module.js',
