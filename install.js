@@ -38,7 +38,8 @@ const scripts = {
   start: 'gulp serve',
   build: 'gulp build --production',
   module: 'node node_modules/sa-template-1/module.js',
-  'lint-css': 'stylelint src/**/*.scss -f verbose --fix'
+  'lint-css': 'stylelint src/**/*.scss -f verbose --fix',
+  'lint-js': 'eslint src/**/*.js --fix'
 };
 const json = {
   ...packageJSON,
