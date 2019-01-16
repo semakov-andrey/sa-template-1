@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = params => {
-  const { gulp, source, dirs } = params;
-  gulp.task('watch', () => {    
+  const {gulp, source, dirs} = params;
+  gulp.task('watch', () => {
     gulp.watch(`${source}/**/*.pug`, gulp.series('html')).on('all', (event, filepath) => global.changedFile = filepath);
     gulp.watch(`${source}/**/*.{sass,scss}`, gulp.series('css'));
     gulp.watch(`${source}/**/*.js`, gulp.series('js'));

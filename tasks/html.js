@@ -1,44 +1,44 @@
 'use strict';
 
 const pug                       = require('gulp-pug');
-const emitty                    = require('emitty').setup('src', 'pug', { makeVinylFile: true });
+const emitty                    = require('emitty').setup('src', 'pug', {makeVinylFile: true});
 const htmlmin                   = require('gulp-htmlmin');
 
 module.exports = params => {
-  const { gulp, production, source, target, dirs, plumber, notify, gulpif, browserSync } = params;
+  const {gulp, production, source, target, dirs, plumber, notify, gulpif, browserSync} = params;
   const input = `${source}/${dirs.html[0]}/*.pug`;
   const output = `${target}/${dirs.html[1]}`;
   gulp.task('html', () => new Promise((resolve, reject) => {
-    let change = global.changedFile ? true : false;
+    const change = !!global.changedFile;
     emitty.scan(global.changedFile).then(() => {
-      gulp.src(input, { read: !change })
-      .pipe(gulpif(change, emitty.filter(global.changedFile)))
-      .pipe(plumber({
-        errorHandler: notify.onError({
-          sound: false,
-          title: 'html',
-          message: error => error.message
+      gulp.src(input, {read: !change})
+        .pipe(gulpif(change, emitty.filter(global.changedFile)))
+        .pipe(plumber({
+          errorHandler: notify.onError({
+            sound: false,
+            title: 'html',
+            message: error => error.message
+          })
+        }))
+        .pipe(pug({
+          pretty: true
+        }))
+        .pipe(gulpif(production, htmlmin({
+          removeComments: true,
+          collapseWhitespace: true,
+          conservativeCollapse: false,
+          quoteCharacter: '"',
+          minifyCSS: true,
+          minifyJS: true,
+          removeAttributeQuotes: true,
+          removeOptionalTags: true
+        })))
+        .pipe(gulp.dest(output))
+        .on('end', () => {
+          browserSync.reload();
+          resolve();
         })
-      }))
-      .pipe(pug({
-        pretty: true
-      }))
-      .pipe(gulpif(production, htmlmin({
-        removeComments: true,
-        collapseWhitespace: true,
-        conservativeCollapse: false,
-        quoteCharacter: '"',
-        minifyCSS: true,
-        minifyJS: true,
-        removeAttributeQuotes: true,
-        removeOptionalTags: true
-      })))
-      .pipe(gulp.dest(output))
-      .on('end', () => {
-        browserSync.reload();
-        resolve();
-      })
-      .on('error', reject);
+        .on('error', reject);
     });
   }));
 };

@@ -1,11 +1,10 @@
 'use strict';
 
 const imagemin                  = require('gulp-imagemin');
-const pngquant                  = require('imagemin-pngquant');
 const rename                    = require('gulp-rename');
 
 module.exports = params => {
-  const { gulp, production, source, target, dirs, gulpif, browserSync } = params;
+  const {gulp, production, source, target, dirs, gulpif, browserSync} = params;
   const input = [
     `${source}/${dirs.images[0]}/**/*.{jpg,gif,png,webp,svg,mp4}`,
     `!${source}/${dirs.sprite[0]}/*.svg`
@@ -26,13 +25,12 @@ module.exports = params => {
       }),
       imagemin.svgo({
         plugins: [
-          { removeViewBox: false },
-          { convertColors: { shorthex: true }},
-          { removeEmptyAttrs: false }
+          {removeViewBox: false},
+          {convertColors: {shorthex: true}},
+          {removeEmptyAttrs: false}
         ]
       })
     ])))
     .pipe(gulp.dest(output))
-    .on('end', () => browserSync.reload())
-  );
+    .on('end', () => browserSync.reload()));
 };

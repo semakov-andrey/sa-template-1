@@ -8,31 +8,31 @@ const buffer                    = require('vinyl-buffer');
 const path                      = require('path');
 
 module.exports = params => {
-  const { gulp, production, source, target, dirs, entries, notify, gulpif, browserSync, sourcemaps } = params;
+  const {gulp, production, source, target, dirs, entries, notify, gulpif, browserSync, sourcemaps} = params;
   const tasks = [];
-  const output = `${target}/${dirs.js[1]}`; 
-  const JS = function(input) {
+  const output = `${target}/${dirs.js[1]}`;
+  const JS = function (input) {
     return function jsBundle() {
       return browserify(input, {
         debug: true
       })
-      .transform(babelify, {
-        presets: ['@babel/preset-env'],
-        plugins: ['@babel/plugin-transform-object-assign'],
-        sourceMaps: true
-      })
-      .bundle()
-      .on('error', notify.onError({
-        sound: false,
-        title: 'js',
-        message: error => error.message
-      }))
-      .pipe(vsource(path.basename(input)))
-      .pipe(buffer())
-      .pipe(gulpif(!production, sourcemaps.init()))
-      .pipe(gulpif(production, uglify()))
-      .pipe(gulpif(!production, sourcemaps.write('.')))
-      .pipe(gulp.dest(output));
+        .transform(babelify, {
+          presets: ['@babel/preset-env'],
+          plugins: ['@babel/plugin-transform-object-assign'],
+          sourceMaps: true
+        })
+        .bundle()
+        .on('error', notify.onError({
+          sound: false,
+          title: 'js',
+          message: error => error.message
+        }))
+        .pipe(vsource(path.basename(input)))
+        .pipe(buffer())
+        .pipe(gulpif(!production, sourcemaps.init()))
+        .pipe(gulpif(production, uglify()))
+        .pipe(gulpif(!production, sourcemaps.write('.')))
+        .pipe(gulp.dest(output));
     };
   };
   entries.js.forEach(value => tasks.push(new JS(`${source}/${dirs.js[0]}/${value}.js`)));
