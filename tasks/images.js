@@ -4,14 +4,16 @@ const imagemin                  = require('gulp-imagemin');
 const rename                    = require('gulp-rename');
 
 module.exports = params => {
-  const {gulp, production, source, target, dirs, gulpif, browserSync} = params;
+  const { gulp, production, source, target, dirs, gulpif, browserSync } = params;
   const input = [
     `${source}/${dirs.images[0]}/**/*.{jpg,gif,png,webp,svg,mp4}`,
     `!${source}/${dirs.sprite[0]}/*.svg`
   ];
   const output = `${target}/${dirs.images[1]}`;
   gulp.task('images', () => gulp.src(input)
-    .pipe(rename(path => path.dirname = '/'))
+    .pipe(rename(path => {
+      path.dirname = '/';
+    }))
     .pipe(gulpif(production, imagemin([
       imagemin.jpegtran({
         progressive: true,
@@ -25,9 +27,9 @@ module.exports = params => {
       }),
       imagemin.svgo({
         plugins: [
-          {removeViewBox: false},
-          {convertColors: {shorthex: true}},
-          {removeEmptyAttrs: false}
+          { removeViewBox: false },
+          { convertColors: { shorthex: true } },
+          { removeEmptyAttrs: false }
         ]
       })
     ])))

@@ -8,7 +8,7 @@ const buffer                    = require('vinyl-buffer');
 const path                      = require('path');
 
 module.exports = params => {
-  const {gulp, production, source, target, dirs, entries, notify, gulpif, browserSync, sourcemaps} = params;
+  const { gulp, production, source, target, dirs, entries, notify, gulpif, browserSync, sourcemaps } = params;
   const tasks = [];
   const output = `${target}/${dirs.js[1]}`;
   const JS = function (input) {
