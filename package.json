@@ -65,7 +65,7 @@
       }
     },
     "devServer": {
-      "secure": true,
+      "secure": false,
       "host": "localhost",
       "open": false,
       "port": "3000"
