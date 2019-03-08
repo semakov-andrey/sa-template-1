@@ -23,7 +23,7 @@ module.exports = params => {
         interlaced: false
       }),
       imagemin.optipng({
-        optimizationLevel: 7
+        optimizationLevel: 4
       }),
       imagemin.svgo({
         plugins: [
