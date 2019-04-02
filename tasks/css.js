@@ -31,6 +31,7 @@ module.exports = params => {
       minifyFontValues: {
         removeQuotes: false
       },
+      reduceIdents: false,
       zindex: false
     })))
     .pipe(gulpif(!production, sourcemaps.write('.')))
