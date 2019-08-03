@@ -1,5 +1,3 @@
-'use strict';
-
 const pug                       = require('gulp-pug');
 const emitty                    = require('emitty').setup('src', 'pug', { makeVinylFile: true });
 const htmlmin                   = require('gulp-htmlmin');

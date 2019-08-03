@@ -1,7 +1,4 @@
-'use strict';
-
 const svgSprite                 = require('gulp-svg-sprites');
-const svgo                      = require('gulp-svgo');
 
 module.exports = params => {
   const { gulp, production, source, target, dirs, browserSync } = params;
@@ -15,13 +12,6 @@ module.exports = params => {
   const input = `${source}/${dirs.sprite[0]}/*.svg`;
   const output = `${target}/${dirs.sprite[1]}`;
   gulp.task('sprite', () => gulp.src(input)
-    .pipe(svgo({
-      plugins: [
-        { removeViewBox: false },
-        { convertColors: { shorthex: true } },
-        { removeEmptyAttrs: false }
-      ]
-    }))
     .pipe(svgSprite({
       mode: 'symbols',
       svg: {

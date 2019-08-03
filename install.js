@@ -13,24 +13,24 @@ const DEV                       = packageJSON && packageJSON.name === 'sa-source
 
 /* update readme */
 if (!fs.existsSync(path.resolve(__dirname, project, 'readme.md'))) {
-  ncp.ncp(path.resolve(__dirname, 'readme.md'), path.resolve(__dirname, project, 'readme.md'), error => error ? console.error('\x1b[31m%s\x1b[0m', `Error:  ${error}`) : console.log('Success: readme updated'));
+  ncp.ncp(path.resolve(__dirname, 'readme.md'), path.resolve(__dirname, project, 'readme.md'), error => error ? console.error('\x1b[31m%s\x1b[0m', `Error:  ${error}`) : console.info('Success: readme updated'));
 }
 
 /* update task-runner */
-ncp.ncp(path.resolve(__dirname, 'gulpfile.js'), path.resolve(__dirname, project, 'gulpfile.js'), error => error ? console.error('\x1b[31m%s\x1b[0m', `Error:  ${error}`) : console.log('Success: task-runner updated'));
+ncp.ncp(path.resolve(__dirname, 'gulpfile.js'), path.resolve(__dirname, project, 'gulpfile.js'), error => error ? console.error('\x1b[31m%s\x1b[0m', `Error:  ${error}`) : console.info('Success: task-runner updated'));
 
 /* update stylelint */
 if (!fs.existsSync(path.resolve(__dirname, project, '.stylelintrc'))) {
-  ncp.ncp(path.resolve(__dirname, '.stylelintrc'), path.resolve(__dirname, project, '.stylelintrc'), error => error ? console.error('\x1b[31m%s\x1b[0m', `Error:  ${error}`) : console.log('Success: stylelint updated'));
+  ncp.ncp(path.resolve(__dirname, '.stylelintrc'), path.resolve(__dirname, project, '.stylelintrc'), error => error ? console.error('\x1b[31m%s\x1b[0m', `Error:  ${error}`) : console.info('Success: stylelint updated'));
 }
 
 /* update eslint */
 if (!fs.existsSync(path.resolve(__dirname, project, '.eslintrc'))) {
-  ncp.ncp(path.resolve(__dirname, '.eslintrc'), path.resolve(__dirname, project, '.eslintrc'), error => error ? console.error('\x1b[31m%s\x1b[0m', `Error:  ${error}`) : console.log('Success: eslint updated'));
+  ncp.ncp(path.resolve(__dirname, '.eslintrc'), path.resolve(__dirname, project, '.eslintrc'), error => error ? console.error('\x1b[31m%s\x1b[0m', `Error:  ${error}`) : console.info('Success: eslint updated'));
 }
 
 /* update tasks */
-ncp.ncp(path.resolve(__dirname, 'tasks'), path.resolve(__dirname, project, 'tasks'), error => error ? console.error('\x1b[31m%s\x1b[0m', `Error:  ${error}`) : console.log('Success: tasks updated'));
+ncp.ncp(path.resolve(__dirname, 'tasks'), path.resolve(__dirname, project, 'tasks'), error => error ? console.error('\x1b[31m%s\x1b[0m', `Error:  ${error}`) : console.info('Success: tasks updated'));
 
 /* update package.json */
 delete templateJSON.dependencies.ncp;
@@ -42,6 +42,7 @@ const scripts = {
   'lint-js': 'eslint src/**/*.js --fix'
 };
 const json = {
+  browserslist: templateJSON.browserslist,
   ...packageJSON,
   scripts: {
     ...packageJSON.scripts,
@@ -64,15 +65,15 @@ const json = {
         ...(packageJSON.config && packageJSON.config.directories && packageJSON.config.directories.tasks ? packageJSON.config.directories.tasks : {})
       }
     },
-    tasks: [...new Set([...(packageJSON.config && packageJSON.config.tasks ? packageJSON.config.tasks : []), ...templateJSON.config.tasks])]
+    tasks: [ ...new Set([ ...(packageJSON.config && packageJSON.config.tasks ? packageJSON.config.tasks : []), ...templateJSON.config.tasks ]) ]
   }
 };
-fs.writeFile(path.resolve(__dirname, project, 'package.json'), JSON.stringify(json, null, 2), 'utf8', error => error ? console.error('\x1b[31m%s\x1b[0m', `Error:  ${error}`) : console.log('Success: package.json updated'));
+fs.writeFile(path.resolve(__dirname, project, 'package.json'), JSON.stringify(json, null, 2), 'utf8', error => error ? console.error('\x1b[31m%s\x1b[0m', `Error:  ${error}`) : console.info('Success: package.json updated'));
 
 /* update gitignore */
-const gitignore = ['node_modules', 'build', 'tmp', '.vscode', '*.log', 'Thumbs.db', '.idea', '.grunt', '.DS_Store', 'bash.exe.stackdump', '.editorconfig', '.yo-rc.json'];
+const gitignore = [ 'node_modules', 'build', 'tmp', '.vscode', '*.log', 'Thumbs.db', '.idea', '.grunt', '.DS_Store', 'bash.exe.stackdump', '.editorconfig', '.yo-rc.json' ];
 const writeGitIgnore = (data, newData = []) => {
-  fs.writeFile(path.resolve(__dirname, project, '.gitignore'), [...new Set([...data, ...newData])].join('\r\n'), 'utf8', error => error ? console.error('\x1b[31m%s\x1b[0m', `Error:  ${error}`) : console.log('Success: gitignore updated'));
+  fs.writeFile(path.resolve(__dirname, project, '.gitignore'), [ ...new Set([ ...data, ...newData ]) ].join('\r\n'), 'utf8', error => error ? console.error('\x1b[31m%s\x1b[0m', `Error:  ${error}`) : console.info('Success: gitignore updated'));
 };
 if (fs.existsSync(path.resolve(__dirname, project, '.gitignore'))) {
   fs.readFile(path.resolve(__dirname, project, '.gitignore'), 'utf8', (error, data) => {

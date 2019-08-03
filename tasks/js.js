@@ -1,5 +1,3 @@
-'use strict';
-
 const browserify                = require('browserify');
 const babelify                  = require('babelify');
 const uglify                    = require('gulp-uglify');
@@ -17,8 +15,8 @@ module.exports = params => {
         debug: true
       })
         .transform(babelify, {
-          presets: ['@babel/preset-env'],
-          plugins: ['@babel/plugin-transform-object-assign'],
+          presets: [ '@babel/preset-env' ],
+          plugins: [ '@babel/plugin-transform-object-assign' ],
           sourceMaps: true
         })
         .bundle()

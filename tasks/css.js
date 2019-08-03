@@ -1,5 +1,3 @@
-'use strict';
-
 const sass                      = require('gulp-sass');
 const postcss                   = require('gulp-postcss');
 const autoprefixer              = require('autoprefixer');
@@ -21,7 +19,7 @@ module.exports = params => {
     .pipe(sass({
       outputStyle: 'expanded'
     }))
-    .pipe(postcss([autoprefixer()]))
+    .pipe(postcss([ autoprefixer() ]))
     .pipe(gulpif(production, cssnano({
       discardComments: {
         removeAll: true

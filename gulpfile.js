@@ -1,5 +1,3 @@
-'use strict';
-
 const packageJSON               = require('./package.json');
 const gulp                      = require('gulp');
 const minimist                  = require('minimist');

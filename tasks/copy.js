@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = params => {
   const { gulp, source, target, dirs, browserSync } = params;
   const input = `${source}/${dirs.copy[0]}/**/*`;
