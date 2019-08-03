@@ -3,7 +3,7 @@ const emitty                    = require('emitty').setup('src', 'pug', { makeVi
 const htmlmin                   = require('gulp-htmlmin');
 
 module.exports = params => {
-  const { gulp, production, source, target, dirs, plumber, notify, gulpif, browserSync } = params;
+  const { gulp, isProd, source, target, dirs, plumber, notify, gulpif, browserSync } = params;
   const input = `${source}/${dirs.html[0]}/*.pug`;
   const output = `${target}/${dirs.html[1]}`;
   gulp.task('html', () => new Promise((resolve, reject) => {
@@ -21,7 +21,7 @@ module.exports = params => {
         .pipe(pug({
           pretty: true
         }))
-        .pipe(gulpif(production, htmlmin({
+        .pipe(gulpif(isProd, htmlmin({
           removeComments: true,
           collapseWhitespace: true,
           conservativeCollapse: false,

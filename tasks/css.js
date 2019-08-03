@@ -4,7 +4,7 @@ const autoprefixer              = require('autoprefixer');
 const cssnano                   = require('gulp-cssnano');
 
 module.exports = params => {
-  const { gulp, production, source, target, dirs, entries, plumber, notify, gulpif, browserSync, sourcemaps } = params;
+  const { gulp, isProd, source, target, dirs, entries, plumber, notify, gulpif, browserSync, sourcemaps } = params;
   const input = entries.css.map(value => `${source}/${dirs.css[0]}/${value}.scss`);
   const output = `${target}/${dirs.css[1]}`;
   gulp.task('css', () => gulp.src(input)
@@ -15,12 +15,12 @@ module.exports = params => {
         message: error => error.message
       })
     }))
-    .pipe(gulpif(!production, sourcemaps.init()))
+    .pipe(gulpif(!isProd, sourcemaps.init()))
     .pipe(sass({
       outputStyle: 'expanded'
     }))
     .pipe(postcss([ autoprefixer() ]))
-    .pipe(gulpif(production, cssnano({
+    .pipe(gulpif(isProd, cssnano({
       discardComments: {
         removeAll: true
       },
@@ -30,7 +30,7 @@ module.exports = params => {
       reduceIdents: false,
       zindex: false
     })))
-    .pipe(gulpif(!production, sourcemaps.write('.')))
+    .pipe(gulpif(!isProd, sourcemaps.write('.')))
     .pipe(gulp.dest(output))
     .pipe(browserSync.stream({
       match: '**/*.css'

@@ -6,7 +6,7 @@ const buffer                    = require('vinyl-buffer');
 const path                      = require('path');
 
 module.exports = params => {
-  const { gulp, production, source, target, dirs, entries, notify, gulpif, browserSync, sourcemaps } = params;
+  const { gulp, isProd, source, target, dirs, entries, notify, gulpif, browserSync, sourcemaps } = params;
   const tasks = [];
   const output = `${target}/${dirs.js[1]}`;
   const JS = function (input) {
@@ -27,9 +27,9 @@ module.exports = params => {
         }))
         .pipe(vsource(path.basename(input)))
         .pipe(buffer())
-        .pipe(gulpif(!production, sourcemaps.init()))
-        .pipe(gulpif(production, uglify()))
-        .pipe(gulpif(!production, sourcemaps.write('.')))
+        .pipe(gulpif(!isProd, sourcemaps.init()))
+        .pipe(gulpif(isProd, uglify()))
+        .pipe(gulpif(!isProd, sourcemaps.write('.')))
         .pipe(gulp.dest(output));
     };
   };

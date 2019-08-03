@@ -2,7 +2,7 @@ const imagemin                  = require('gulp-imagemin');
 const rename                    = require('gulp-rename');
 
 module.exports = params => {
-  const { gulp, production, source, target, dirs, gulpif, browserSync } = params;
+  const { gulp, isProd, source, target, dirs, gulpif, browserSync } = params;
   const input = [
     `${source}/${dirs.images[0]}/**/*.{jpg,gif,png,webp,svg,mp4}`,
     `!${source}/${dirs.sprite[0]}/*.svg`
@@ -12,7 +12,7 @@ module.exports = params => {
     .pipe(rename(path => {
       path.dirname = '/';
     }))
-    .pipe(gulpif(production, imagemin([
+    .pipe(gulpif(isProd, imagemin([
       imagemin.jpegtran({
         progressive: true,
         quality: 80
