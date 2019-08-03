@@ -16,7 +16,6 @@ const source                    = packageJSON.config.directories.source;
 const target                    = packageJSON.config.directories[production ? 'production' : 'development'];
 const dirs                      = packageJSON.config.directories.tasks;
 const entries                   = packageJSON.config.entries;
-const browserList               = packageJSON.config.browsers;
 const work                      = packageJSON.config.tasks;
 
 glob.sync('./tasks/**/*.js').map(file => require(file)({
@@ -31,7 +30,6 @@ glob.sync('./tasks/**/*.js').map(file => require(file)({
   notify,
   gulpif,
   browserSync,
-  browserList,
   sourcemaps
 }));
 

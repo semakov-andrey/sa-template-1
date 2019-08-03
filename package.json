@@ -86,9 +86,6 @@
       "fonts",
       "images",
       "sprite"
-    ],
-    "browsers": [
-      "> 0.5%"
     ]
   },
   "dependencies": {
@@ -133,5 +130,8 @@
   },
   "devDependencies": {
     "sa-source": "^1.1.7"
-  }
+  },
+  "browserslist": [
+    "> 0.5%"
+  ]
 }
