@@ -1,12 +1,10 @@
-'use strict';
-
 const sass                      = require('gulp-sass');
 const postcss                   = require('gulp-postcss');
 const autoprefixer              = require('autoprefixer');
 const cssnano                   = require('gulp-cssnano');
 
 module.exports = params => {
-  const { gulp, production, source, target, dirs, entries, plumber, notify, gulpif, browserSync, browserList, sourcemaps } = params;
+  const { gulp, production, source, target, dirs, entries, plumber, notify, gulpif, browserSync, sourcemaps } = params;
   const input = entries.css.map(value => `${source}/${dirs.css[0]}/${value}.scss`);
   const output = `${target}/${dirs.css[1]}`;
   gulp.task('css', () => gulp.src(input)
@@ -21,9 +19,7 @@ module.exports = params => {
     .pipe(sass({
       outputStyle: 'expanded'
     }))
-    .pipe(postcss([autoprefixer({
-      browsers: browserList
-    })]))
+    .pipe(postcss([autoprefixer()]))
     .pipe(gulpif(production, cssnano({
       discardComments: {
         removeAll: true

@@ -1,5 +1,3 @@
-'use strict';
-
 const configServer              = require('../package.json').config.devServer;
 
 module.exports = params => {

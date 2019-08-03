@@ -1,5 +1,3 @@
-'use strict';
-
 const packageJSON               = require('./package.json');
 const gulp                      = require('gulp');
 const minimist                  = require('minimist');
@@ -11,18 +9,20 @@ const sourcemaps                = require('gulp-sourcemaps');
 const browserSync	              = require('browser-sync');
 
 const args                      = minimist(process.argv.slice(2));
-const production                = typeof args.production !== 'undefined';
-const source                    = packageJSON.config.directories.source;
-const target                    = packageJSON.config.directories[production ? 'production' : 'development'];
-const dirs                      = packageJSON.config.directories.tasks;
-const entries                   = packageJSON.config.entries;
-const browserList               = packageJSON.config.browsers;
-const work                      = packageJSON.config.tasks;
+const isProduction              = typeof args.production !== 'undefined';
+const {
+  config: {
+    directories: { source, production, development, tasks: dirs },
+    entries,
+    tasks
+  }
+} = packageJSON;
+const target                    = isProduction ? production : development;
 
 glob.sync('./tasks/**/*.js').map(file => require(file)({
   packageJSON,
   gulp,
-  production,
+  isProduction,
   source,
   target,
   dirs,
@@ -31,12 +31,11 @@ glob.sync('./tasks/**/*.js').map(file => require(file)({
   notify,
   gulpif,
   browserSync,
-  browserList,
   sourcemaps
 }));
 
-gulp.task('serve', gulp.series('clean', gulp.parallel(...work), gulp.parallel('watch', 'browser')));
+gulp.task('serve', gulp.series('clean', gulp.parallel(...tasks), gulp.parallel('watch', 'browser')));
 
-gulp.task('build', gulp.series('clean', gulp.parallel(...work)));
+gulp.task('build', gulp.series('clean', gulp.parallel(...tasks)));
 
 gulp.task('default', gulp.series('serve'));

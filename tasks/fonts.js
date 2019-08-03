@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = params => {
   const { gulp, source, target, dirs, browserSync } = params;
   const input  = `${source}/${dirs.fonts[0]}/*.{eot,otf,ttf,woff,woff2}`;

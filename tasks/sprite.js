@@ -1,5 +1,3 @@
-'use strict';
-
 const svgSprite                 = require('gulp-svg-sprites');
 const svgo                      = require('gulp-svgo');
 

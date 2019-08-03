@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = params => {
   const { gulp, source, dirs } = params;
   gulp.task('watch', () => {

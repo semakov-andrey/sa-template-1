@@ -1,5 +1,3 @@
-'use strict';
-
 const imagemin                  = require('gulp-imagemin');
 const rename                    = require('gulp-rename');
 

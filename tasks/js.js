@@ -1,5 +1,3 @@
-'use strict';
-
 const browserify                = require('browserify');
 const babelify                  = require('babelify');
 const uglify                    = require('gulp-uglify');
