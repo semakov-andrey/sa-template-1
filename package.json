@@ -118,7 +118,7 @@
     "gulp-watch": "^5.0.1",
     "imagemin-pngquant": "^8.0.0",
     "ncp": "^2.0.0",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "stylelint": "^10.1.0",
     "stylelint-declaration-block-no-ignored-properties": "^2.1.0",
     "stylelint-scss": "^3.9.3",
